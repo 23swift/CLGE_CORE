@@ -1,0 +1,16 @@
+﻿@if (ViewContext.ModelState.IsValid == false)
+{
+    
+
+
+    <div class="row" ng-show="model.errorMessage">
+                <div class="col-md-12 col-sm-12">
+                    <div class="alert alert-danger">
+                        <strong>Error</strong>
+                        <div asp-validation-summary="All" class="danger">
+                            
+                        </div>
+                    </div>
+                </div>
+    </div>
+}
