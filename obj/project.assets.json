@@ -4669,11 +4669,11 @@
       ]
     },
     "IdentityServer4/2.2.0": {
-      "sha512": "diozvMQnHiZH4EwcG3X1Si/AIq1yN7hLuQ0Dv3lr1uCuUBRYJV2HUEICnFv4ZLWVzQePI0Q1elC8cT7X8PHssg==",
+      "sha512": "/vfyOUkoYUMJBDgPskCSPRpM06n9Ejpk5gpVxhMl1i0GjColZBBjuO4qoM042OGRwAPM/Mn2WHZFlm39tSIVuw==",
       "type": "package",
       "path": "identityserver4/2.2.0",
       "files": [
-        ".nupkg.metadata",
+        ".signature.p7s",
         "identityserver4.2.2.0.nupkg.sha512",
         "identityserver4.nuspec",
         "lib/netstandard2.0/IdentityServer4.dll",
@@ -12214,23 +12214,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\a012001164\\.nuget\\packages\\": {},
-    "C:\\dotnet-sdk-2.1.302-win-x64\\sdk\\NuGetFallbackFolder": {}
+    "/Users/arnoldmac/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\a012001164\\Documents\\IdsServer\\IdsServer.csproj",
+      "projectUniqueName": "/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/IdsServer.csproj",
       "projectName": "IdsServer",
-      "projectPath": "c:\\Users\\a012001164\\Documents\\IdsServer\\IdsServer.csproj",
-      "packagesPath": "C:\\Users\\a012001164\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\a012001164\\Documents\\IdsServer\\obj\\",
+      "projectPath": "/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/IdsServer.csproj",
+      "packagesPath": "/Users/arnoldmac/.nuget/packages/",
+      "outputPath": "/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\dotnet-sdk-2.1.302-win-x64\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\a012001164\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/arnoldmac/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
