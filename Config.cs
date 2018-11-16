@@ -122,6 +122,7 @@ namespace IdsServer
                         new Claim(JwtClaimTypes.Email, "alice@alice.com"),
                         new Claim(JwtClaimTypes.Role,"Admin"),
                         new Claim(JwtClaimTypes.Role,"Manager"),
+                        new Claim(JwtClaimTypes.Role,"Supervisor"),
                         new Claim("api1", "api1"),
                         new Claim("group_code", "ao"),
                         new Claim("group_name", "Account Officer"),

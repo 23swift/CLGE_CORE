@@ -16,11 +16,19 @@ namespace IdsServer
         {
             var seed = args.Any(x => x == "/seed");
             if (seed) args = args.Except(new[] { "/seed" }).ToArray();
-            
-            CreateWebHostBuilder(args).Build().Run();
+
+            // CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+             if (seed)
+            {
+                SeedData.EnsureSeedData(host.Services);
+                return;
+            }
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+          
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
     }

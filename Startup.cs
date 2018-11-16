@@ -13,6 +13,9 @@ using IdsServer.Models;
 using IdsServer.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using IdentityModel;
+using System.Reflection;
+
 namespace IdsServer
 {
     public class Startup
@@ -26,7 +29,7 @@ namespace IdsServer
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -44,10 +47,20 @@ namespace IdsServer
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
             .AddInMemoryClients(Config.GetClients())
-            // .AddTestUsers(Config.GetUsers())
+            //.AddTestUsers(Config.GetUsers())
             .AddAspNetIdentity<ApplicationUser>()
             .AddInMemoryIdentityResources(Config.GetIdentityResources())
             .AddInMemoryApiResources(Config.GetApiResources());
+            // .AddOperationalStore(options =>
+            // {
+            //     options.ConfigureDbContext = builder =>
+            //         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            //             sql => sql.MigrationsAssembly(migrationsAssembly));
+
+            //     // this enables automatic token cleanup. this is optional.
+            //     options.EnableTokenCleanup = true;
+            //     options.TokenCleanupInterval = 30;
+            // });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }

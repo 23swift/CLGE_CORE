@@ -45,7 +45,15 @@ namespace IdsServer
                         new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
+                        new Claim(JwtClaimTypes.Role,"Admin"),
+                        new Claim(JwtClaimTypes.Role,"Manager"),
+                        new Claim(JwtClaimTypes.Role,"Supervisor"),
+                        new Claim("api1", "api1"),
+                        new Claim("group_code", "ao"),
+                        new Claim("group_name", "Account Officer"),
+                        new Claim("route_access", "{'newAffEncode','newAffCheker'}")
+
                     }).Result;
                     if (!result.Succeeded)
                     {
@@ -79,7 +87,14 @@ namespace IdsServer
                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                         new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
                         new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
-                        new Claim("location", "somewhere")
+                        new Claim("location", "somewhere"),
+                         new Claim(JwtClaimTypes.Role,"Admin"),
+                        new Claim(JwtClaimTypes.Role,"Manager"),
+                        new Claim(JwtClaimTypes.Role,"Supervisor"),
+                        new Claim("api1", "api1"),
+                        new Claim("group_code", "ao"),
+                        new Claim("group_name", "Account Officer"),
+                        new Claim("route_access", "{'newAffEncode','newAffCheker'}")
                     }).Result;
                     if (!result.Succeeded)
                     {
