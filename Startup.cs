@@ -9,7 +9,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using IdsServer.Models;
+using IdsServer.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 namespace IdsServer
 {
     public class Startup
@@ -31,12 +34,18 @@ namespace IdsServer
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+                services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
             .AddInMemoryClients(Config.GetClients())
-            .AddTestUsers(Config.GetUsers())
+            // .AddTestUsers(Config.GetUsers())
+            .AddAspNetIdentity<ApplicationUser>()
             .AddInMemoryIdentityResources(Config.GetIdentityResources())
             .AddInMemoryApiResources(Config.GetApiResources());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

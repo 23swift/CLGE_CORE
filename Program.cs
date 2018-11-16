@@ -14,6 +14,9 @@ namespace IdsServer
     {
         public static void Main(string[] args)
         {
+            var seed = args.Any(x => x == "/seed");
+            if (seed) args = args.Except(new[] { "/seed" }).ToArray();
+            
             CreateWebHostBuilder(args).Build().Run();
         }
 

@@ -20,14 +20,20 @@ namespace IdsServer
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
+                
                 new IdentityResource{
                     Name="group_access",
                     DisplayName="Group Access",
-                    UserClaims={"group_code","group_name","route_access"}
+                    UserClaims={"group_code",JwtClaimTypes.Role,"group_name","route_access"}
                     
 
                     
                 }
+                // new IdentityResource{
+                //     Name="role",
+                //     DisplayName="User Role",
+                //     UserClaims={JwtClaimTypes.}
+                // }
             };
         }
 
@@ -89,6 +95,7 @@ namespace IdsServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        
                         "api1","group_access"
                     },
                     // RequireConsent=false,
@@ -109,9 +116,12 @@ namespace IdsServer
 
                     Claims = new List<Claim>
                     {
-                        new Claim(JwtClaimTypes.Name, "Alice"),
+                        new Claim(JwtClaimTypes.GivenName, "Alice"),
+                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
                         new Claim(JwtClaimTypes.WebSite, "https://alice.com"),
                         new Claim(JwtClaimTypes.Email, "alice@alice.com"),
+                        new Claim(JwtClaimTypes.Role,"Admin"),
+                        new Claim(JwtClaimTypes.Role,"Manager"),
                         new Claim("api1", "api1"),
                         new Claim("group_code", "ao"),
                         new Claim("group_name", "Account Officer"),
