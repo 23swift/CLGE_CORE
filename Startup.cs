@@ -46,21 +46,26 @@ namespace IdsServer
 
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
-            .AddInMemoryClients(Config.GetClients())
-            //.AddTestUsers(Config.GetUsers())
-            .AddAspNetIdentity<ApplicationUser>()
-            .AddInMemoryIdentityResources(Config.GetIdentityResources())
-            .AddInMemoryApiResources(Config.GetApiResources());
-            // .AddOperationalStore(options =>
-            // {
-            //     options.ConfigureDbContext = builder =>
-            //         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //             sql => sql.MigrationsAssembly(migrationsAssembly));
+            // .AddInMemoryClients(Config.GetClients())
+            // .AddTestUsers(Config.GetUsers())
+             .AddConfigurationStore(options =>
+            { 
+                options.ConfigureDbContext = builder => builder.UseSqlite(Configuration.GetConnectionString("DefaultConnection"), sql => sql.MigrationsAssembly(migrationsAssembly)); 
+            })
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
 
-            //     // this enables automatic token cleanup. this is optional.
-            //     options.EnableTokenCleanup = true;
-            //     options.TokenCleanupInterval = 30;
-            // });
+                // this enables automatic token cleanup. this is optional.
+                options.EnableTokenCleanup = true;
+                // options.TokenCleanupInterval = 30;
+            })
+            .AddAspNetIdentity<ApplicationUser>();
+            // .AddInMemoryIdentityResources(Config.GetIdentityResources())
+            // .AddInMemoryApiResources(Config.GetApiResources());
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }

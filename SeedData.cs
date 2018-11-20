@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
+using IdentityServer4.EntityFramework.Mappers;
 using IdsServer.Data;
 using IdsServer.Models;
 using Microsoft.AspNetCore.Identity;
@@ -106,7 +107,13 @@ namespace IdsServer
                 {
                     Console.WriteLine("bob already exists");
                 }
+
+
+                
+
             }
-        }
+       
+       
+       }
     }
 }

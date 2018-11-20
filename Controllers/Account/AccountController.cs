@@ -121,8 +121,10 @@ namespace IdentityServer4.Quickstart.UI
                 // if (_users.ValidateCredentials(model.Username, model.Password))
                 if (result.Succeeded)
                 {
-                    var user = _users.FindByUsername(model.Username);
-                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId, user.Username));
+                    // var user = _users.FindByUsername(model.Username);
+                    var user=await _userManager.FindByNameAsync(model.Username);
+                    
+                    await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.SubjectId, user.UserName));
 
                     // only set explicit expiration here if user chooses "remember me". 
                     // otherwise we rely upon expiration configured in cookie middleware.
@@ -138,7 +140,7 @@ namespace IdentityServer4.Quickstart.UI
 
                     // issue authentication cookie with subject ID and username
                    
-                    await HttpContext.SignInAsync(user.SubjectId, user.Username, props);
+                    await HttpContext.SignInAsync(user.Id, user.UserName, props);
 
                     if (context != null)
                     {
@@ -211,7 +213,9 @@ namespace IdentityServer4.Quickstart.UI
             if (User?.Identity.IsAuthenticated == true)
             {
                 // delete local authentication cookie
-                await HttpContext.SignOutAsync();
+                //  await HttpContext.SignOutAsync();
+                await _signInManager.SignOutAsync();
+                   
 
                 // raise the logout event
                 await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));

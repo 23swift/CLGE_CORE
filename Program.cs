@@ -22,6 +22,7 @@ namespace IdsServer
              if (seed)
             {
                 SeedData.EnsureSeedData(host.Services);
+                SeedConfig.EnsureSeedData(host.Services);
                 return;
             }
             host.Run();
