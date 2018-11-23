@@ -29,7 +29,8 @@ namespace IdsServer
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+        {var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name; 
+        var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -38,7 +39,7 @@ namespace IdsServer
             });
 
                 services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -46,21 +47,27 @@ namespace IdsServer
 
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
-            .AddInMemoryClients(Config.GetClients())
-            //.AddTestUsers(Config.GetUsers())
+            // .AddInMemoryClients(Config.GetClients())
+            // .AddTestUsers(Config.GetUsers())
             .AddAspNetIdentity<ApplicationUser>()
-            .AddInMemoryIdentityResources(Config.GetIdentityResources())
-            .AddInMemoryApiResources(Config.GetApiResources());
-            // .AddOperationalStore(options =>
-            // {
-            //     options.ConfigureDbContext = builder =>
-            //         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-            //             sql => sql.MigrationsAssembly(migrationsAssembly));
+            // .AddInMemoryIdentityResources(Config.GetIdentityResources())
+            // .AddInMemoryApiResources(Config.GetApiResources());
+             .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlite(connectionString,
+                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = builder =>
+                    builder.UseSqlite(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
 
-            //     // this enables automatic token cleanup. this is optional.
-            //     options.EnableTokenCleanup = true;
-            //     options.TokenCleanupInterval = 30;
-            // });
+                // this enables automatic token cleanup. this is optional.
+                options.EnableTokenCleanup = true;
+                options.TokenCleanupInterval = 30;
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }
