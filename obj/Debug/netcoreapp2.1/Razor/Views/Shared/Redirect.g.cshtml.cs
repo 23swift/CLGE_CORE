@@ -75,7 +75,11 @@ WriteAttributeValue("", 170, Model.RedirectUrl, 170, 18, false);
             WriteLiteral("\">\n");
             EndContext();
             BeginContext(221, 47, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe4263b0c2fc44908bfe333176a96f93", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd1702f28bb94c29aa22d8039aa3500c", async() => {
+>>>>>>> e16f8ac5b63b834685ddda1b0062659810f2efcb
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -63,7 +63,11 @@ using IdentityServer4.AspNetIdentity;
             WriteLiteral("    <div class=\"row\" ng-show=\"model.errorMessage\">\n                <div class=\"col-md-12 col-sm-12\">\n                    <div class=\"alert alert-danger\">\n                        <strong>Error</strong>\n                        ");
             EndContext();
             BeginContext(280, 109, false);
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e500b0c686344a9bb361929d7c811969", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07ff7652fe33488fb5a9f5e2b6580700", async() => {
+>>>>>>> e16f8ac5b63b834685ddda1b0062659810f2efcb
                 BeginContext(329, 54, true);
                 WriteLiteral("\n                            \n                        ");
                 EndContext();

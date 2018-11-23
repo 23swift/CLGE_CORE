@@ -141,7 +141,11 @@ WriteAttributeValue("", 612, Model.SignOutIframeUrl, 612, 23, false);
                 WriteLiteral("        ");
                 EndContext();
                 BeginContext(740, 48, false);
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0894cbc354f1486f8c98a0213eb16a35", async() => {
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a685a824ca0843988a7bdc88aca6aed6", async() => {
+>>>>>>> e16f8ac5b63b834685ddda1b0062659810f2efcb
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -70,5 +70,4 @@ namespace IdsServer
             Console.WriteLine();
         }
     }
-
 }

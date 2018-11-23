@@ -98,7 +98,7 @@ namespace IdsServer
                         
                         "api1","group_access"
                     },
-                    // RequireConsent=false,
+                    RequireConsent=false,
                     AllowOfflineAccess = true
                 }
             };
