@@ -1,5 +1,7 @@
 ﻿body {
-    margin-top: 65px;
+    /* margin-top: 65px; */
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-header {
@@ -105,13 +107,13 @@
 
 .bg-primary {
     color: #fff;
-    background-color: #1a2b51;
+    background-color: #043673;
 }
 
 .navbar-inverse {
     background-color: #043673;
     border-color: transparent;
-    color: #ff9c00;
+    color: whitesmoke;
 }
 
 .navbar-inverse .navbar-text {
@@ -127,7 +129,7 @@
 }
 
 .navbar-inverse .navbar-brand {
-    color: #ff9c00;
+    color: whitesmoke;
 }
 
 h1,
@@ -143,7 +145,7 @@ h6,
     font-family: inherit;
     font-weight: 400;
     line-height: 1.1;
-    color: #ff9c00;
+    color: #FFB20C;
 }
 
 .dashhead-title {
@@ -162,9 +164,10 @@ h6,
     text-transform: uppercase;
 }
 
-.card-title {
+
+/* .card-title {
     color: #043673;
-}
+} */
 
 th {
     color: #043673;
@@ -259,13 +262,107 @@ select.form-control {
 
 .panel-title {
     color: #dddddd;
+    padding: 10px;
 }
 
 .front-login {
     background-color: #043673;
     border-radius: 4px;
-    padding: 5px;
+    padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: 0;
+    /* margin: 0; */
+}
+
+.body-content {
+    padding-top: 10px;
+}
+
+.table {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+}
+
+.front-login .fas {
+    color: whitesmoke;
+}
+
+
+/* .front-login ::placeholder {
+    color: whitesmoke;
+} */
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red !important;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: red !important;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: red !important;
+}
+
+
+/* .nav-item .fas {
+    color: #043673;
+} */
+
+.navbar-nav li a i {
+    /* color: #FFB20C !important; */
+    color: #043673 !important;
+}
+
+.navbar-nav li a {
+    color: #ff9c00 !important;
+}
+
+.sysHeader1 {
+    background-color: #1a2b51;
+}
+
+.card .card-title {
+    color: white;
+}
+
+.bg-primary {
+    background-color: #043673 !important;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+
+.form-control::-ms-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+
+.form-control::placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+
+.text-primary {
+    color: #043673 !important;
+}
+
+.card-header h4 {
+    color: #043673 !important;
 }

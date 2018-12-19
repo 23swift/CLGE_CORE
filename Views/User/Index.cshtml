@@ -1,0 +1,79 @@
+@{
+
+    List<IdsServer.Models.ApplicationUser> users=ViewBag.userList;
+}
+@model IdsServer.Models.ApplicationUser
+
+<div class="card bg-light mb-3" style="width: 100%">
+  <div class="card-header bg-primary"><h3>Users</h3>  
+  
+  
+  <form class="form-inline">
+      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+      <div class="input-group" style="width:100%">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><i class="fa fa-search"></i></div>
+        </div>
+        <input type="text" class="form-control"  id="inlineFormInputGroupUsername2" placeholder="User">
+      </div>
+    </form>
+  </div>
+  <div class="card-body">
+    <a type="button" asp-action="Create" class="btn btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Add User</a>
+    <!-- <h4 class="card-title">Light card title</h4> -->
+        <table class="table table-sm">
+      <thead>
+    <tr>
+      <th scope="col">User Name</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Group</th>
+      <th scope="col">Role</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   @foreach (var item in users)
+   {
+       <tr>
+        <td>@item.UserName</td>
+        <td>@item.FirstName  @item.LastName</td>
+        <td>ITD</td>
+        <td>Admin</td>
+        <td> <a  asp-action="Details"><i class="fa fa-edit"></i></a> |<i class="fa fa-trash"></i></td>
+      </tr>
+   }
+   
+    
+
+
+  </tbody>
+    </table>
+    <div>
+  <ul class="pagination  pull-right">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&laquo;</a>
+    </li>
+    <li class="page-item active">
+      <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">4</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">5</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">&raquo;</a>
+    </li>
+  </ul>
+</div>
+
+  </div>
+</div>
