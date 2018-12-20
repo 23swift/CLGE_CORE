@@ -41,7 +41,7 @@ namespace IdsServer
                     }
 
                     result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                        new Claim("ao_encoder","true"),
+                        
                         new Claim(JwtClaimTypes.Name, "Alice Smith"),
                         new Claim(JwtClaimTypes.GivenName, "Alice"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -55,7 +55,7 @@ namespace IdsServer
                         new Claim("api1", "api1"),
                         new Claim("group_code", "ao"),
                         new Claim("group_name", "Account Officer"),
-                        new Claim("route_access", "{'newAffEncode','newAffCheker'}")
+                        new Claim("route_access", "{'newAffEncode','newAffChecker'}")
 
                     }).Result;
                     if (!result.Succeeded)

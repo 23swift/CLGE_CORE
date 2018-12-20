@@ -2,11 +2,12 @@ using System;
 using System.Linq;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdentityServer4.EntityFramework.Mappers;
+using IdsServer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IdsServer
 {
-    public class SeedConfig
+   public class SeedConfig
     {
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
