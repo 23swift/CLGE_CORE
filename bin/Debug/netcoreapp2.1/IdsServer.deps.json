@@ -3506,7 +3506,7 @@
     "IdentityServer4/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/vfyOUkoYUMJBDgPskCSPRpM06n9Ejpk5gpVxhMl1i0GjColZBBjuO4qoM042OGRwAPM/Mn2WHZFlm39tSIVuw==",
+      "sha512": "sha512-diozvMQnHiZH4EwcG3X1Si/AIq1yN7hLuQ0Dv3lr1uCuUBRYJV2HUEICnFv4ZLWVzQePI0Q1elC8cT7X8PHssg==",
       "path": "identityserver4/2.2.0",
       "hashPath": "identityserver4.2.2.0.nupkg.sha512"
     },

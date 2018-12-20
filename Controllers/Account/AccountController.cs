@@ -121,7 +121,7 @@ namespace IdentityServer4.Quickstart.UI
                 // var result=_users.ValidateCredentials(model.Username, model.Password);
                 if (result.Succeeded)
                 {
-                    // var user = _users.FindByUsername(model.Username);
+                    //  var user = _users.FindByUsername(model.Username);
                     var user = await _userManager.FindByNameAsync(model.Username);
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.SubjectId, user.UserName));
 
@@ -139,13 +139,8 @@ namespace IdentityServer4.Quickstart.UI
 
                     // issue authentication cookie with subject ID and username
                    
-<<<<<<< HEAD
                     await HttpContext.SignInAsync(user.UserName, props);
 
-=======
-                    // await HttpContext.SignInAsync(user.SubjectId, user.UserName, props);
-                    await _signInManager.SignInAsync(user,true);
->>>>>>> 49aec9856535b4911dcca024fa2f002cf1e3e0ea
                     if (context != null)
                     {
                         if (await _clientStore.IsPkceClientAsync(context.ClientId))

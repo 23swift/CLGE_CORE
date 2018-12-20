@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+   
+    var action = ViewContext.RouteData.Values["Action"];
+    var controller = ViewContext.RouteData.Values["Controller"];
+    var Id = ViewContext.RouteData.Values["Id"];
+    var tabId=ViewBag.tabId;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -66,8 +74,14 @@
   </div>
 </nav>
 
+<ol class="breadcrumb">
+          <li class="breadcrumb-item"><a asp-controller="@controller" asp-action="Index">@controller</a></li>
+          <li class="breadcrumb-item"><a asp-controller="@controller" asp-action="@action">@action</a></li>
+          <li class='breadcrumb-item active @(Id==null? "d-none":string.Empty)'>Data</li>
+        </ol>
 
-    <div class="container body-content">
+
+    <div class="container-fluid body-content">
         @RenderBody()
     </div>
 

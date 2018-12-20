@@ -46,13 +46,14 @@ namespace IdsServer
           return RedirectToAction("Index");
           
         }
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int? Id)
         {
             //TODO: Implement Realistic Implementation
-          await Task.Yield();
+          var appUser= await _userManager.FindByIdAsync(Id.ToString());
+          
           ViewBag.tabId="details";
          
-          return View();
+          return View(appUser);
         }
          public async Task<IActionResult> Roles()
         {
@@ -62,11 +63,38 @@ namespace IdsServer
          
           return View();
         }
-          public async Task<IActionResult> Applications()
+          public async Task<IActionResult> Applications(int? Id)
         {
             //TODO: Implement Realistic Implementation
           await Task.Yield();
           ViewBag.tabId="application";
+         
+          return View();
+        }
+
+        public async Task<IActionResult> AddUserApplication()
+        {
+            //TODO: Implement Realistic Implementation
+          await Task.Yield();
+         
+         
+          return View();
+        }
+
+        
+        public async Task<IActionResult> AddUserGroup()
+        {
+            //TODO: Implement Realistic Implementation
+          await Task.Yield();
+         
+         
+          return View();
+        }
+          public async Task<IActionResult> AddUserRole()
+        {
+            //TODO: Implement Realistic Implementation
+          await Task.Yield();
+         
          
           return View();
         }
