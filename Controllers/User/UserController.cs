@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdsServer.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 //using UserController.Models;
@@ -14,6 +15,7 @@ namespace IdsServer
     public class UserController : Controller
     {
        private readonly UserManager<ApplicationUser> _userManager;
+      //  private readonly UserStore<ApplicationUser> _userStore;
         public UserController( UserManager<ApplicationUser> userManager) {
 
              _userManager = userManager;

@@ -1,4 +1,6 @@
 @{
     Layout="_TabbedLayout";
+     var Id = ViewContext.RouteData.Values["Id"];
 }
 <H1>Roles</H1>
+<a  asp-action="Applications" asp-route-id="@Id"><-Back</a>

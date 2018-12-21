@@ -45,8 +45,9 @@ namespace IdsServer
             
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
-                .AddDefaultTokenProviders();
-
+                .AddDefaultTokenProviders()
+                .AddUserStore<ApplicationUserStore>();
+                
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
             // .AddInMemoryClients(Config.GetClients())

@@ -1,10 +1,11 @@
 @{
     Layout="_TabbedLayout";
+    var Id = ViewContext.RouteData.Values["Id"];
 }
 <div>
     <H3>Applications</H3>
     <div class="float-right">
-            <a type="button" asp-action="AddUserApplication" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Application</a>
+            <a type="button" asp-action="AddUserApplication" asp-route-id="@Id" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Application</a>
     </div>
 
 </div>
@@ -23,8 +24,8 @@
     <tr>
         <td>Merchant Acquiring System</td>
         <td>tertryryrer123435435</td>
-        <td><a asp-action="AddUserGroup"> <i id="" class="fa fa-users-cog fa-2x" ></i> Groups</a></td>
-        <td><a asp-action="AddUserRole"><i id="" class="fa fa-user-tag fa-2x"></i>Roles</a></td>
+        <td><a asp-action="AddUserGroup" asp-route-id="@Id"> <i id="" class="fa fa-users-cog fa-2x" ></i> Groups</a></td>
+        <td><a asp-action="AddUserRole" asp-route-id="@Id"><i id="" class="fa fa-user-tag fa-2x"></i>Roles</a></td>
         
         <td><a class="text-danger"><i id="" class="fa text-danger fa-minus-circle fa-2x "></i>Delete</a></td>
     </tr>

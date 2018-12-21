@@ -1,6 +1,6 @@
 @{
     Layout="_UserLayout";
+     var Id = ViewContext.RouteData.Values["Id"];
 }
 <h1>Assign Application to User</h1>
-
-<a  asp-action="Applications"><-Back</a>
+<a  asp-action="Applications" asp-route-id="@Id"><-Back</a>
