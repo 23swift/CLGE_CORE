@@ -1,2 +1,45 @@
 On The document checklist-> If the submitted checkbox is not ticked and was submitted, the request
 shall be routed to MDM for Monitoring of insuf docs
+
+*New Affiliation Request Checking By Ao Checker - MERCHANT PARTNERSHIP SALES – AO Checker
+As a MERCHANT PARTNERSHIP SALES – AO Checker, I want to check the  request encoded by AO Encoder.
+1. AO Checker Logs in to the system
+2. System displays dashboard for MERCHANT PARTNERSHIP SALES – AO Checker contains request that tag as "FOR AO CHECKING"
+3. AO Checker selects an item
+4. System displays the details
+5. AO Checker submit the request to MAU.
+6. AO Checker logout of the system
+
+*New Affiliation Request handling Returned by Approver - MERCHANT PARTNERSHIP SALES – AO Encoders
+As a MERCHANT PARTNERSHIP SALES – AO Encoder, I want to update New Affilliaton request returned by Approver. 
+User Logs in to the system
+System displays dashboard for MERCHANT PARTNERSHIP SALES – AO Encoder contains request that tag as "Returned By Approver"
+User selects an item
+System displays the details
+User reads the remarks of the MAMO and updates the submitted Documents
+User re-submit the request to MAMO.
+User logout of the system
+
+*New Affiliation Request handling Returned by Merchant Quality Review - MERCHANT PARTNERSHIP SALES – AO Encoders
+User Logs in to the system
+System displays dashboard for MERCHANT PARTNERSHIP SALES – AO Encoder contains request that tag as "Returned By Checker"
+User selects an item
+System displays the details
+User reads the remarks of the QA and updates the submitted Documents
+User re-submit the request to Merchant Quality Review.
+User logout of the system
+
+*New Affiliation Request handling Declined by Approver - MERCHANT PARTNERSHIP SALES – AO Encoders
+As a MERCHANT PARTNERSHIP SALES – AO Encoder, I want to re-submit New Affilliaton request declined by the Approver. 
+User Logs in to the system
+System displays dashboard for MERCHANT PARTNERSHIP SALES – AO Encoder contains request that tag as "Declined"
+User selects an item
+System displays the details
+User reads the remarks of the Declined remarks 
+User has an option to accept the decline decision and
+User has an option to  update the detail and re-submit the request to MAMO or to MQR.
+User logout of the system
+
+*New Affiliation Request handling Returned by MAM Officer- MERCHANT PARTNERSHIP SALES – AO Encoders
+
+*New Affiliation Request Approve With Requirement handling  MERCHANT PARTNERSHIP SALES – AO Encoders
