@@ -1,9 +1,13 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-class UserController:Controller
+public class UserController:Controller
 {
-    public IActionResult Index(){
-
-        return View();
-    }
+    [HttpGet]
+   public async Task<IActionResult> Index()
+   {
+       //TODO: Implement Realistic Implementation
+     await Task.Yield();
+     return View();
+   }
 }

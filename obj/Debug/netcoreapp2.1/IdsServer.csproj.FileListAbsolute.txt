@@ -80,3 +80,4 @@ C:/Users/a012001164/Documents/IdsServer/obj/Debug/netcoreapp2.1/IdsServer.csproj
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.dll
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.pdb
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.csproj.CopyComplete
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/Razor/Views/User/Index.g.cshtml.cs
