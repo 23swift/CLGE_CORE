@@ -1,0 +1,30 @@
+@{
+   int clientId = ViewBag.ClientId;
+}
+@model IdsServer.Models.ApplicationUserRole
+<h1>Create Role</h1>
+
+
+<div class="card bg-secondary mb-3" >
+  <div class="card-header">
+      <div id="" class="row">
+          <i id="" class="fa fa-user-tag text-primary fa-3x col-md-6"></i> <h4 class="col-md-5" >New Role</h4>
+      </div>
+      
+  </div>
+  <div class="card-body">
+            <form asp-action="Create" method="post">
+            <input type="hidden" asp-for="ClientId" value="@clientId">
+            <div id="" class="form-group">
+                            <label for="UserName">Role Name</label>
+                            <input type="text" asp-for="Name" class="form-control">
+                        
+                        </div>
+
+                        <div id="" class="row">
+            <a asp-action="Index" class="btn btn-default">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+
+  </div>

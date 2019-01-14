@@ -1,5 +1,7 @@
 ﻿body {
-    margin-top: 65px;
+    /* margin-top: 65px; */
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-header {
@@ -105,13 +107,13 @@
 
 .bg-primary {
     color: #fff;
-    background-color: #1a2b51;
+    background-color: #043673;
 }
 
 .navbar-inverse {
     background-color: #043673;
     border-color: transparent;
-    color: #ff9c00;
+    color: whitesmoke;
 }
 
 .navbar-inverse .navbar-text {
@@ -127,7 +129,7 @@
 }
 
 .navbar-inverse .navbar-brand {
-    color: #ff9c00;
+    color: whitesmoke;
 }
 
 h1,
@@ -143,7 +145,7 @@ h6,
     font-family: inherit;
     font-weight: 400;
     line-height: 1.1;
-    color: #ff9c00;
+    color: #FFB20C;
 }
 
 .dashhead-title {
@@ -162,9 +164,10 @@ h6,
     text-transform: uppercase;
 }
 
-.card-title {
+
+/* .card-title {
     color: #043673;
-}
+} */
 
 th {
     color: #043673;
@@ -208,7 +211,8 @@ hr {
     margin: 0
 }
 
-textarea,
+
+/* textarea,
 textarea.form-control,
 input.form-control,
 input[type=text],
@@ -228,14 +232,16 @@ select.form-control {
     -webkit-box-shadow: inset 0 -1px 0 #dddddd;
     box-shadow: inset 0 -1px 0 #dddddd;
     font-size: 14px;
-    /*height: 25px;*/
-}
+   
+\]'
 
+
+}
+*/ 
 .progress-bar-animated {
     -webkit-animation: progress-bar-stripes 1s linear infinite;
     animation: progress-bar-stripes 1s linear infinite;
 }
-
 
 /* #bdoLogoWeFind {
     content: url(images/bdoLogo.png);
@@ -244,28 +250,129 @@ select.form-control {
 #bdoLogo {
     content: url(images/bdoLogoSmall.png);
 } */
-
 .no-underline .accordion-toggle:hover,
 .no-underline .accordion-toggle:active,
 .no-underline .accordion-toggle:focus {
     text-decoration: none;
 }
-
 .panel-default>.panel-heading {
     color: #212121;
     background-color: #043673 !important;
     border-color: #dddddd;
 }
-
 .panel-title {
     color: #dddddd;
+    padding: 10px;
 }
-
 .front-login {
     background-color: #043673;
     border-radius: 4px;
-    padding: 5px;
+    padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin: 0;
+    /* margin: 0; */
+}
+.body-content {
+    padding-top: 10px;
+}
+.table {
+    margin-top: 30px;
+    width: 100%;
+}
+.card {
+    width: 100%;
+}
+.front-login .fas {
+    color: whitesmoke;
+}
+
+/* .front-login ::placeholder {
+    color: whitesmoke;
+} */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    
+    color: red !important;
+    opacity: 1;
+    /* Firefox */
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    
+    color: red !important;
+}
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    
+    color: red !important;
+}
+
+/* .nav-item .fas {
+    color: #043673;
+} */
+.navbar-nav li a i {
+    /* color: #FFB20C !important; */
+    
+    color: #043673 !important;
+}
+.navbar-nav li a {
+    color: #ff9c00 !important;
+}
+.sysHeader1 {
+    background-color: #1a2b51;
+}
+.card .card-title {
+    color: white;
+}
+.bg-primary {
+    background-color: #043673 !important;
+}
+.form-control::-webkit-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+.form-control:-ms-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+.form-control::-ms-input-placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+.form-control::placeholder {
+    color: #FFB20C;
+    opacity: .8;
+}
+.text-primary {
+    color: #043673 !important;
+}
+.card-header h4 {
+    color: #043673 !important;
+}
+.container {
+    width: 100% !important;
+}
+.body-content {
+    width: 90% !important;
+}
+.form-control {
+    margin-top: 0;
+    display: block;
+    width: 100%;
+    height: calc(.5rem + 0rem);
+    padding: .7rem 0;
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: #666;
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 0rem solid transparent;
+    border-radius: 0;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+td a i {
+    color: #043673 !important;
 }

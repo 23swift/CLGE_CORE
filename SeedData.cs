@@ -30,7 +30,9 @@ namespace IdsServer
                 {
                     alice = new ApplicationUser
                     {
-                        UserName = "alice"
+                        UserName = "alice",
+                        FirstName="Alice",
+                        LastName="Smith"
                     };
                     var result = userMgr.CreateAsync(alice, "Pass123$").Result;
                     if (!result.Succeeded)
@@ -72,7 +74,10 @@ namespace IdsServer
                 {
                     bob = new ApplicationUser
                     {
-                        UserName = "bob"
+                        UserName = "bob",
+                        FirstName="Bob",
+                        LastName="Smith"
+                        
                     };
                     var result = userMgr.CreateAsync(bob, "Pass123$").Result;
                     if (!result.Succeeded)

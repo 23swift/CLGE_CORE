@@ -1,0 +1,49 @@
+@model IdsServer.Models.ApplicationUser
+
+<!-- <h1>Add</h1> -->
+
+
+
+
+ <form asp-action="Create" method="post">
+<div class="card bg-secondary mb-3" >
+  <div class="card-header">
+      <div id="" class="row">
+          <i id="" class="fa fa-user-plus text-primary fa-3x col-md-6"></i> <h4 class="col-md-5" >New User</h4>
+      </div>
+      
+  </div>
+  <div class="card-body">
+   
+  
+
+            <div id="" class="form-group">
+                <label for="UserName">User Name</label>
+                <input type="text" asp-for="UserName" class="form-control">
+            
+            </div>
+
+            <div id="" class="form-group"><label for="FirstName">First Name</label>
+                <input type="text" class="form-control" asp-for="FirstName">
+            </div>
+
+        <div id="" class="form-group"><label for="LastName">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName">
+        </div>
+
+
+
+  
+
+
+
+  </div>
+   <div class="card-footer text-muted">
+    <div id="" class="row">
+<a asp-action="Index" class="btn btn-default">Cancel</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+  </div>
+</div>
+</form>

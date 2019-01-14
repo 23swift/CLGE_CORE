@@ -1,0 +1,40 @@
+
+@{
+
+    List<IdentityServer4.EntityFramework.Entities.Client> clients=ViewBag.clients;
+}
+@model IdentityServer4.EntityFramework.Entities.Client
+<h1>Systems</h1>
+
+<table id="" class="table">
+    <thead>
+        <tr>
+            <th>System</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+        @foreach (var item in clients)
+        {
+            <tr>
+                <td>@item.ClientName</td>
+                <td>
+                    <a> <i class="fa fa-users fa-2x"></i>Groups</a>
+
+                </td>
+                <td><a asp-controller="Role" asp-action="Index" asp-route-id="@item.Id" >
+                    <i class="fa fa-user-tag fa-2x"></i>
+                    Roles</a></td>
+                <td>
+                    <a>Edit</a> |
+                    <a>Delete</a>
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>

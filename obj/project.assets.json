@@ -4654,7 +4654,6 @@
       "type": "package",
       "path": "identitymodel/3.6.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "identitymodel.3.6.1.nupkg.sha512",
         "identitymodel.nuspec",
@@ -6127,7 +6126,6 @@
       "type": "package",
       "path": "microsoft.entityframeworkcore.sqlserver/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
@@ -6162,7 +6160,6 @@
       "type": "package",
       "path": "microsoft.extensions.caching.abstractions/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
@@ -6175,7 +6172,6 @@
       "type": "package",
       "path": "microsoft.extensions.caching.memory/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
@@ -6200,7 +6196,6 @@
       "type": "package",
       "path": "microsoft.extensions.configuration/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
@@ -6213,7 +6208,6 @@
       "type": "package",
       "path": "microsoft.extensions.configuration.abstractions/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
@@ -6226,7 +6220,6 @@
       "type": "package",
       "path": "microsoft.extensions.configuration.binder/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
@@ -6337,7 +6330,6 @@
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
         "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
@@ -6354,7 +6346,6 @@
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
@@ -6548,7 +6539,6 @@
       "type": "package",
       "path": "microsoft.extensions.logging/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
@@ -6561,7 +6551,6 @@
       "type": "package",
       "path": "microsoft.extensions.logging.abstractions/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
@@ -6646,7 +6635,6 @@
       "type": "package",
       "path": "microsoft.extensions.options/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
@@ -6671,7 +6659,6 @@
       "type": "package",
       "path": "microsoft.extensions.primitives/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
@@ -6696,7 +6683,6 @@
       "type": "package",
       "path": "microsoft.identitymodel.logging/5.2.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -6758,7 +6744,6 @@
       "type": "package",
       "path": "microsoft.identitymodel.tokens/5.2.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -7319,10 +7304,7 @@
       "type": "package",
       "path": "newtonsoft.json/11.0.2",
       "files": [
-        ".nupkg.metadata",
         "LICENSE.md",
-        "Newtonsoft.Json.11.0.2.nupkg.sha512",
-        "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -7340,7 +7322,9 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml"
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "Newtonsoft.Json.Bson/1.0.1": {
@@ -7361,7 +7345,6 @@
       "type": "package",
       "path": "remotion.linq/2.2.0",
       "files": [
-        ".nupkg.metadata",
         "lib/net35/Remotion.Linq.XML",
         "lib/net35/Remotion.Linq.dll",
         "lib/net40/Remotion.Linq.XML",
@@ -7972,7 +7955,6 @@
       "type": "package",
       "path": "system.collections.immutable/1.5.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8126,7 +8108,6 @@
       "type": "package",
       "path": "system.componentmodel.annotations/4.5.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8339,7 +8320,6 @@
       "type": "package",
       "path": "system.data.sqlclient/4.5.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8992,7 +8972,6 @@
       "type": "package",
       "path": "system.identitymodel.tokens.jwt/5.2.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
         "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
@@ -9009,7 +8988,6 @@
       "type": "package",
       "path": "system.interactive.async/3.1.1",
       "files": [
-        ".nupkg.metadata",
         "lib/net45/System.Interactive.Async.dll",
         "lib/net45/System.Interactive.Async.xml",
         "lib/net46/System.Interactive.Async.dll",
@@ -9479,7 +9457,6 @@
       "type": "package",
       "path": "system.memory/4.5.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -10332,7 +10309,6 @@
       "type": "package",
       "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",

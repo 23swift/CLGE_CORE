@@ -17,52 +17,51 @@
                         <h3 class="panel-title">Login</h3>
                     </div>
                     <div class="panel-body">
-                    <div class="row" style="margin:0;background-color:white;padding:5px;border-radius: 5px;border-style: solid;border-width: 1px;border-color: #FFB20C">
-                                <div class="col-sm-12 col-xs-12" style="margin-top:2px;">
+                    <div class="row">
+                                <div class="col-sm-12 col-xs-12" >
 
                                         <div>
 
                                             <img id="bdoLogoWeFind" alt="BDO" src="/images/bdoLogo.png">&nbsp;
                                         
-                                            <h3 class="pull-right">
-                                                <strong style="color:#043673">CLG</strong>
-                                                <small style="color:#ff9c00 ">Exchange <span style="font-size:11px;color:#043673"><strong>1.0.0</strong></span></small>
+                                            <h3 class="float-right">
+                                                <strong >CLG</strong>
+                                                <small >Exchange <span ><strong>1.0.0</strong></span></small>
                                             </h3>
                                             <br>
-                                            <span style="font-size:11px;color:#043673" class="pull-right"></span>
+                                            <span  class="pull-right"></span>
                                         </div>
 
                                 </div>
                     </div>
-                                <div class="alert alert-warning" style="margin-top: 2px;padding:5px;">
-                                    <strong style="color:#1a2b51">System Description: </strong>
-                                    <p style="color:#043673">A common request processing System for Consumer loans group.</p>
+                                <div class="alert alert-warning" >
+                                    <strong >System Description: </strong>
+                                    <p>A common request processing System for Consumer loans group.</p>
 
                                 </div>
                                         <form asp-route="Login">
                                             <input type="hidden" asp-for="ReturnUrl" />
 
                                             <fieldset class="front-login">
-                                                <div class="form-group">
+                                                <div class="form-group row">
                                                     
                                                 
 
-                                                    <div class="col-md-1" >
-                                                        <i class="fa fa-user fa-2x"></i> <!--Username-->
-                                                    </div>
-                                                            <div class="col-md-11">
+                                                   <label class="col-md-2"  for="username"><i class="fas fa-user fa-5x float-right"></i><!--Username--></label>
+                                                            <div class="col-md-10">
                                                                 <!-- <input required name="username" autofocus id="username"  type="text" class="form-control" placeholder="Username" ng-model="model.username" maxlength="100"> -->
                                                                 <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
                                                             </div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group row">
                                             
                                                 
-                                                    <label class="col-md-1 control-label" asp-for="Password" >
-                                                                <i class="fa fa-keyboard-o fa-2x"></i>
+                                                    <label class="col-sm-2 control-label" asp-for="Password" >
+                                                                
+                                                                <i class="fas fa-keyboard fa-4x float-right"></i>
                                                                 <!--Password-->
                                                             </label>
-                                                            <div class="col-md-11">
+                                                            <div class="col-md-10">
                                                                 
                                                                 <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
                                                             </div>
@@ -84,18 +83,18 @@
                                                 <div class="form-group" >
                                                 
                                                     <!-- <button class="btn btn-default" name="button" value="cancel">Cancel</button> -->
-                                                    <div class="col-md-offset-1 col-md-11">
-                                                                <button class="btn btn-primary" name="button" value="login">Login</button>
+                                                    <div class="col-md-12">
+                                                                <button class="btn float-right" name="button" value="login">Login</button>
                                                     </div>
                                                 </div>
                                             </fieldset>
                                         </form>
                                 </div>
 
-                                 <div class="panel-footer" style="background-color: #e6e6e6;padding:0;padding-left:2px;padding-right:2px;">
+                                 <div class="panel-footer">
 
-                                <p style="color:#043673">
-                                    <small style="font-size:11px;">Only authorized employees may use this system. It is an offense to log on to the system if you are unauthorized or to use it for illicit purposes. Access to this system is being monitored.</small>
+                                <p >
+                                    <small >Only authorized employees may use this system. It is an offense to log on to the system if you are unauthorized or to use it for illicit purposes. Access to this system is being monitored.</small>
                                 </p>
                              </div>
                 </div>

@@ -36,6 +36,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly IEventService _events;
             private readonly SignInManager<ApplicationUser> _signInManager;
              private readonly UserManager<ApplicationUser> _userManager;
+             
         public AccountController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
@@ -121,7 +122,7 @@ namespace IdentityServer4.Quickstart.UI
                 // var result=_users.ValidateCredentials(model.Username, model.Password);
                 if (result.Succeeded)
                 {
-                    // var user = _users.FindByUsername(model.Username);
+                    //  var user = _users.FindByUsername(model.Username);
                     var user = await _userManager.FindByNameAsync(model.Username);
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.SubjectId, user.UserName));
 
@@ -139,8 +140,8 @@ namespace IdentityServer4.Quickstart.UI
 
                     // issue authentication cookie with subject ID and username
                    
-                    // await HttpContext.SignInAsync(user.SubjectId, user.UserName, props);
-                    await _signInManager.SignInAsync(user,true);
+                    await HttpContext.SignInAsync(user.UserName, props);
+
                     if (context != null)
                     {
                         if (await _clientStore.IsPkceClientAsync(context.ClientId))

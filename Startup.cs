@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using IdentityModel;
 using System.Reflection;
-
+using IdentityServer4.Stores;
 namespace IdsServer
 {
     public class Startup
@@ -41,10 +41,13 @@ namespace IdsServer
                 services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationUserRole>()
+            
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddUserStore<ApplicationUserStore>();
+                
             services.AddIdentityServer()
             .AddDeveloperSigningCredential()
             // .AddInMemoryClients(Config.GetClients())

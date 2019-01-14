@@ -1,0 +1,35 @@
+@{
+    Layout = "_UserLayout";
+    var action = ViewContext.RouteData.Values["Action"];
+     var controller = ViewContext.RouteData.Values["Controller"];
+         var Id = ViewContext.RouteData.Values["Id"];
+    var tabId=ViewBag.tabId;
+}
+
+        
+
+
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class='nav-link @(action.Equals("Details") ? "active":string.Empty)'  asp-action="Details" asp-route-id="@Id">Details</a>
+                </li>
+                
+                <!-- <li class="nav-item">
+                  <a class='nav-link  @(action.Equals("Roles") ? "active":string.Empty)'  asp-action="Roles">Roles</a>
+                </li> -->
+                <li class="nav-item">
+                  <a class='nav-link  @(action.Equals("Applications") ? "active":string.Empty)'   asp-action="Applications"  asp-route-id="@Id">Applications</a>
+                </li>
+                <!-- <li  class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li> -->
+                
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade show active" id="@tabId">
+                <div class="container-fluid">
+                      @RenderBody()
+                  </div>
+                </div>
+                
+              </div>
