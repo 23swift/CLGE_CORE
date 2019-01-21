@@ -55,7 +55,7 @@ namespace IdsServer
             if (!context.ApiResources.Any())
             {
                 Console.WriteLine("ApiResources being populated");
-                foreach (var resource in Config.GetApiResources())
+                foreach (var resource in Config.GetApis())
                 {
                     context.ApiResources.Add(resource.ToEntity());
                 }

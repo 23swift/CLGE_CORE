@@ -2,6 +2,7 @@
     Layout="_TabbedLayout";
     var Id = ViewContext.RouteData.Values["Id"];
 }
+@model List<IdsServer.Models.AppUserClient>
 <div>
     <H3>Applications</H3>
     <div class="float-right">
@@ -21,14 +22,20 @@
     <th></th>
 </thead>
 <tbody>
+
+    @foreach (var item in Model)
+    {
     <tr>
         <td>Merchant Acquiring System</td>
-        <td>tertryryrer123435435</td>
+        <td>@item.ClientId</td>
         <td><a asp-action="AddUserGroup" asp-route-id="@Id"> <i id="" class="fa fa-users-cog fa-2x" ></i> Groups</a></td>
         <td><a asp-action="AddUserRole" asp-route-id="@Id"><i id="" class="fa fa-user-tag fa-2x"></i>Roles</a></td>
         
         <td><a class="text-danger"><i id="" class="fa text-danger fa-minus-circle fa-2x "></i>Delete</a></td>
     </tr>
+        
+    }
+    
 </tbody>
 
 </table>

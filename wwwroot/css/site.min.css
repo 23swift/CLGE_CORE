@@ -248,3 +248,8 @@ select.form-control {
 .no-underline .accordion-toggle:focus {
     text-decoration: none;
 }
+
+.list-group ul{
+
+    margin-bottom: 10px !important;
+}

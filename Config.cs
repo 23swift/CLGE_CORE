@@ -10,34 +10,24 @@ using System.Security.Claims;
 
 namespace IdsServer
 {
-    public class Config
+     public static class Config
     {
-        // scopes define the resources in your system
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
+             var accessProfile = new IdentityResource(
+                name: "access.profile",
+                displayName: "Access Profile",
+                claimTypes: new[] { "system", "group", "role" });
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(),
-                
-                new IdentityResource{
-                    Name="group_access",
-                    DisplayName="Group Access",
-                    UserClaims={"group_code",JwtClaimTypes.Role,"group_name","route_access"}
-                    
-
-                    
-                }
-                // new IdentityResource{
-                //     Name="role",
-                //     DisplayName="User Role",
-                //     UserClaims={JwtClaimTypes.}
-                // }
+                accessProfile
+                 
             };
         }
 
-        public static IEnumerable<ApiResource> GetApiResources()
+        public static IEnumerable<ApiResource> GetApis()
         {
             return new List<ApiResource>
             {
@@ -45,104 +35,80 @@ namespace IdsServer
             };
         }
 
-        // clients want to access resources (aka scopes)
         public static IEnumerable<Client> GetClients()
         {
-            // client credentials client
             return new List<Client>
             {
                 new Client
                 {
                     ClientId = "client",
+
+                    // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
-                    ClientSecrets = 
+                    // secret for authentication
+                    ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
+
+                    // scopes that client has access to
                     AllowedScopes = { "api1" }
                 },
-
                 // resource owner password grant client
                 new Client
                 {
                     ClientId = "ro.client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 
-                    ClientSecrets = 
+                    ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
                     AllowedScopes = { "api1" }
                 },
-
-                // OpenID Connect hybrid flow and client credentials client (MVC)
+                // OpenID Connect hybrid flow client (MVC)
                 new Client
                 {
                     ClientId = "map",
                     ClientName = "Merchant Acquiring System",
-                    AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
+                    AllowedGrantTypes = GrantTypes.Hybrid,
 
-                    ClientSecrets = 
+                    ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
 
-                    RedirectUris = { "https://localhost:5003/signin-oidc" },
+                    RedirectUris           = { "https://localhost:5003/signin-oidc" },
                     PostLogoutRedirectUris = { "https://localhost:5003/signout-callback-oidc" },
-                    FrontChannelLogoutUri= "https://localhost:5003/signout-oidc",
-                    AllowedScopes = 
+
+                    AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        
-                        "api1","group_access"
+                        "api1","access.profile"
                     },
-                    RequireConsent=false,
+
                     AllowOfflineAccess = true
-                }
-            };
-        }
-
-        public static List<TestUser> GetUsers()
-        {
-            return new List<TestUser>
-            {
-                new TestUser
-                {
-                    SubjectId = "1",
-                    Username = "alice",
-                    Password = "password",
-
-                    Claims = new List<Claim>
-                    {
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.WebSite, "https://alice.com"),
-                        new Claim(JwtClaimTypes.Email, "alice@alice.com"),
-                        new Claim(JwtClaimTypes.Role,"Admin"),
-                        new Claim(JwtClaimTypes.Role,"Manager"),
-                        new Claim(JwtClaimTypes.Role,"Supervisor"),
-                        new Claim("api1", "api1"),
-                        new Claim("group_code", "ao"),
-                        new Claim("group_name", "Account Officer"),
-                        new Claim("route_access", "{'newAffEncode','newAffCheker'}")
-
-                       
-
-                    }
                 },
-                new TestUser
+                // JavaScript Client
+                new Client
                 {
-                    SubjectId = "2",
-                    Username = "bob",
-                    Password = "password",
+                    ClientId = "js",
+                    ClientName = "JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
 
-                    Claims = new List<Claim>
+                    RedirectUris =           { "http://localhost:5003/callback.html" },
+                    PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
+                    AllowedCorsOrigins =     { "http://localhost:5003" },
+
+                    AllowedScopes =
                     {
-                        new Claim("name", "Bob"),
-                        new Claim("website", "https://bob.com"),
-                          new Claim(JwtClaimTypes.Email, "bob@bob.com")
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
                     }
                 }
             };

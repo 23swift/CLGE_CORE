@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.EntityFramework.Entities;
+using IdentityServer4.EntityFramework.Interfaces;
 using IdsServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -15,10 +17,16 @@ namespace IdsServer
     public class UserController : Controller
     {
        private readonly UserManager<ApplicationUser> _userManager;
+       private readonly IConfigurationDbContext _configDbContext;
+       private readonly IPersistedGrantDbContext _persistedDbContext;
+
       //  private readonly UserStore<ApplicationUser> _userStore;
-        public UserController( UserManager<ApplicationUser> userManager) {
+        public UserController( UserManager<ApplicationUser> userManager,IConfigurationDbContext configDbContext,
+        IPersistedGrantDbContext persistedDbContext) {
 
              _userManager = userManager;
+             _configDbContext=configDbContext;
+             _persistedDbContext=persistedDbContext;
          }
         public async Task<IActionResult> Index()
         {
@@ -42,8 +50,45 @@ namespace IdsServer
         public async Task<IActionResult> Create([Bind("FirstName,LastName,UserName")] ApplicationUser user)
         {
             //TODO: Implement Realistic Implementation
+                IActionResult ActionResult=RedirectToAction("Index");
+                var clientList=new List<AppUserClient>();
+                // clientList.Add(new AppUserClient{
+                //     ClientId="map"
 
-          var result = await _userManager.CreateAsync(user);
+                // });
+                // user.Clients=clientList;
+                var result = await _userManager.CreateAsync(user);
+                if(!result.Succeeded){
+
+                    // throw new  Exception(result.Errors.FirstOrDefault().ToString());
+                    ViewBag.message=result.Errors.FirstOrDefault().Description;
+                    ActionResult=View(user);
+                }
+
+
+
+
+                    return ActionResult;
+                
+            
+
+          
+            
+          
+          
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update([Bind("FirstName,LastName,UserName,Id")] ApplicationUser user)
+        {
+            //TODO: Implement Realistic Implementation
+              var u= await _userManager.FindByIdAsync(user.UserName);
+              u.FirstName=user.FirstName;
+              u.LastName=user.LastName;
+              u.UserName=user.UserName;
+
+
+          var result = await _userManager.UpdateAsync(u);
             
           return RedirectToAction("Index");
           
@@ -51,7 +96,7 @@ namespace IdsServer
         public async Task<IActionResult> Details(int? Id)
         {
             //TODO: Implement Realistic Implementation
-          var appUser= await _userManager.FindByIdAsync(Id.ToString());
+          var appUser=  await _userManager.Users.Where(u=>u.Id.Equals((int)Id)).FirstOrDefaultAsync();
           
           ViewBag.tabId="details";
          
@@ -68,20 +113,53 @@ namespace IdsServer
           public async Task<IActionResult> Applications(int? Id)
         {
             //TODO: Implement Realistic Implementation
-          await Task.Yield();
+            var appUser= await _userManager.Users.Include(c=>c.Clients).FirstAsync(u=>u.Id.Equals((int) Id));
+           var clientList= appUser.Clients.ToList();
+          // await Task.Yield();
           ViewBag.tabId="application";
          
-          return View();
+          return View(clientList);
         }
 
+        [HttpGet]
         public async Task<IActionResult> AddUserApplication()
         {
             //TODO: Implement Realistic Implementation
-          await Task.Yield();
+            ViewBag.header="Assign Application to User";
+            var applicationList=await _configDbContext.Clients.ToListAsync();
+            List<IdsServer.Models.SystemEditorViewModel> systemList=new List<SystemEditorViewModel>();
+
+            foreach (var item in applicationList)
+            {
+                systemList.Add(new Models.SystemEditorViewModel{
+                  Name=item.ClientName,
+                  Id=item.Id
+                });
+            }
+          
          
          
-          return View();
+          return View(systemList);
         }
+        [HttpGet]
+    public async Task<IActionResult> AddUserApplication(IdsServer.Models.SystemEditorViewModel[] systemList)
+            {
+                //TODO: Implement Realistic Implementation
+                ViewBag.header="Assign Application to User";
+                PersistedGrant pg=new PersistedGrant();
+
+                foreach (var item in systemList)
+                {
+                    pg.ClientId=item.Id.ToString();
+                   await _persistedDbContext.PersistedGrants.AddAsync(pg);
+                }
+               await _persistedDbContext.SaveChangesAsync();
+              //  _persistedDbContext.PersistedGrants.
+              
+            
+            
+              return RedirectToAction("Index");
+            }
 
         
         public async Task<IActionResult> AddUserGroup()

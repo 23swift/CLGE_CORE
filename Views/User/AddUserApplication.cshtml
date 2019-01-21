@@ -2,5 +2,34 @@
     Layout="_UserLayout";
      var Id = ViewContext.RouteData.Values["Id"];
 }
-<h1>Assign Application to User</h1>
-<a  asp-action="Applications" asp-route-id="@Id"><-Back</a>
+@model List<IdsServer.Models.SystemEditorViewModel>
+
+<h2>Applications</h2>
+<form asp-action="AddUserApplication" method="get">
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                   
+                     <div class="  form-check pull-right">
+                         <input class="form-check-input" name="systemList" type="checkbox" value="@item.Selected" checked="@item.Selected">
+                            <label class="form-check-label">
+                            
+                            @item.Name
+                            </label>
+                </div>
+                 
+                </li>
+            }
+        
+        
+        </ul>
+<div id="" class="row">
+                <div class="col-md-6">
+                        <a asp-action="Index" class="btn btn-default" asp-route-id="@Id">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                 
+                </div>
+</form>
+
+

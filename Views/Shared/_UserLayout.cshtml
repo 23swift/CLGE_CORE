@@ -1,6 +1,6 @@
 @{
     Layout = "_Layout";
-
+    string header=ViewBag.header==null?string.Empty:ViewBag.header;
    
 }
 
@@ -8,7 +8,7 @@
 <div class="card bg-secondary">
   <div class="card-header">
      <div id="" class="row">
-          <i id="" class="fa fa-user-cog text-primary fa-3x col-md-6"></i> <h4 class="col-md-5" >New User</h4>
+          <i id="" class="fa fa-user-cog text-primary fa-2x"></i> <h4>@header</h4>
       </div>
   </div>
   <div class="card-body">

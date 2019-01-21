@@ -1,8 +1,18 @@
+@{
+   <!-- string msg= ViewBag.message; -->
+}
 @model IdsServer.Models.ApplicationUser
 
 <!-- <h1>Add</h1> -->
 
-
+@if(ViewBag.message!=null){
+    <div class="alert alert-dismissible alert-danger">
+        <h4 class="alert-heading">Creating User Failed!</h4>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong> @ViewBag.message
+    </div>
+    
+}
 
 
  <form asp-action="Create" method="post">
@@ -40,10 +50,21 @@
   </div>
    <div class="card-footer text-muted">
     <div id="" class="row">
-<a asp-action="Index" class="btn btn-default">Cancel</a>
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <a asp-action="Index" class="btn btn-default">Cancel</a>
+            
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Add</button>
+                <button type="button" class="btn btn-primary">
+                    <i class="fa fa-cog"></i>
+                    Add & Configure</button>
+                
+            </div>
 </div>
 
   </div>
 </div>
 </form>
+

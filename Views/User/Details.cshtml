@@ -4,9 +4,9 @@
 @model IdsServer.Models.ApplicationUser
 <H1>Details</H1>
 
-<form action="Update">
+<form asp-controller="User" asp-action="Update" method="post">
 
-
+<input type="hidden" asp-for="Id" class="form-control">
              <div id="" class="form-group">
                 <label for="UserName">User Name</label>
                 <input type="text" asp-for="UserName" class="form-control">

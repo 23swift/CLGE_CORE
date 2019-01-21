@@ -1,7 +1,7 @@
 @{
    int clientId = ViewBag.ClientId;
 }
-@model IdsServer.Models.ApplicationUserRole
+@model IdsServer.Models.ApplicationRole
 <h1>Create Role</h1>
 
 
@@ -13,18 +13,30 @@
       
   </div>
   <div class="card-body">
-            <form asp-action="Create" method="post">
-            <input type="hidden" asp-for="ClientId" value="@clientId">
+            <form asp-action="Create" method="post" asp-route-ClientId="@ViewBag.ClientId">
+            <!-- <input type="hidden" name="ClientId" value="@ViewBag.ClientId"> -->
+            
             <div id="" class="form-group">
                             <label for="UserName">Role Name</label>
                             <input type="text" asp-for="Name" class="form-control">
                         
                         </div>
 
-                        <div id="" class="row">
-            <a asp-action="Index" class="btn btn-default">Cancel</a>
+            <div id="" class="row">
+                <div class="col-md-6">
+                        <a asp-action="Index" class="btn btn-default" asp-route-clientId="@clientId">Cancel</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                 
+                </div>
+                <div class=" col-md-6 form-check pull-right">
+                            <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" checked="">
+                            Add Another Role
+                            </label>
             </div>
+
+            </div>
+            
             </form>
 
   </div>

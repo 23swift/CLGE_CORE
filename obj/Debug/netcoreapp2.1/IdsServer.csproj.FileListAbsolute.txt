@@ -1,3 +1,9 @@
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.csprojAssemblyReference.cache
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.csproj.CoreCompileInputs.cache
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.RazorAssemblyInfo.cache
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.RazorAssemblyInfo.cs
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.AssemblyInfoInputs.cache
+/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.AssemblyInfo.cs
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.deps.json
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.runtimeconfig.json
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.runtimeconfig.dev.json
@@ -5,12 +11,6 @@
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.pdb
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.Views.dll
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/bin/Debug/netcoreapp2.1/IdsServer.Views.pdb
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.csprojAssemblyReference.cache
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.csproj.CoreCompileInputs.cache
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.RazorAssemblyInfo.cache
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.RazorAssemblyInfo.cs
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.AssemblyInfoInputs.cache
-/Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.AssemblyInfo.cs
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.TagHelpers.input.cache
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.TagHelpers.output.cache
 /Users/arnoldmac/Documents/CLGE_CORE/CLGE_CORE/obj/Debug/netcoreapp2.1/IdsServer.RazorCoreGenerate.cache

@@ -9,31 +9,60 @@ using IdsServer.Data;
 using System.Linq;
 using System.Security.Claims;
 using IdentityServer4.EntityFramework.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace IdsServer.Models
 
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
+    // public class ApplicationUser : IdentityUser<int>
     public class ApplicationUser : IdentityUser<int>
     {
         public string SubjectId{get;set;}
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public virtual ICollection<ApplicationUserClaim> Claims { get; set; }
-         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
+        // public virtual ICollection<ApplicationUserClaim> Claims { get; set; }
+        //  public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
         // public virtual ICollection<UserGroup> UserGroups { get; set; }
+        public virtual ICollection<AppUserClient> Clients { get; set; }
 
     }
-    public class ApplicationUserRole :IdentityRole<int>
+    public class AppUserClient
     {
-        public int ClientId{get;set;}
-        public Client Client{get;set;}
+        public int id{get;set;}
+        public virtual ApplicationUser ApplicationUser{get;set;}
+
+
+        //[ForeignKey("Client")]
+        public string ClientId{get;set;}
+        // public virtual Client Client{get;set;}
+
+    }
+    // public class ApplicationRole :IdentityRole<int>
+    public class ApplicationRole :IdentityRole<int>
+    {
+        
+    //    
+    
+        // [ForeignKey("Clients")]
+        // public int ClientId{get;set;}
+        
+        public int Client{get;set;}
         
     }
+    public class ApplicationUserRole :IdentityUserRole<int>
+    {
+
+
+
+    }
+
     public class ApplicationUserClaim :IdentityUserClaim<int>
     {
 
-        
+
     }
 
     public class ApplicationUserLogin:IdentityUserLogin<int>
@@ -44,7 +73,7 @@ namespace IdsServer.Models
     {
 
     }
-    public  class ApplicationUserStore :  UserStore<ApplicationUser, ApplicationUserRole, ApplicationDbContext, int>
+    public  class ApplicationUserStore :  UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, int>
     {
         private readonly ApplicationDbContext _Context;
         public ApplicationUserStore(ApplicationDbContext context, IdentityErrorDescriber describer)
@@ -62,8 +91,8 @@ namespace IdsServer.Models
 
                 return Task.FromResult(user);
         }
-      
-      
+
+
     }
     // public class UserGroup
     // {
@@ -72,4 +101,11 @@ namespace IdsServer.Models
     //     public int UserId { get; set; }
 
     // }
+
+    public class ApplicationUserManager : UserManager<ApplicationUser>
+    {
+        public ApplicationUserManager(IUserStore<ApplicationUser> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<ApplicationUser> passwordHasher, IEnumerable<IUserValidator<ApplicationUser>> userValidators, IEnumerable<IPasswordValidator<ApplicationUser>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<ApplicationUser>> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
+        {
+        }
+    }
 }

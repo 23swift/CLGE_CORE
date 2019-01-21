@@ -1,5 +1,17 @@
 @{
    int clientId = ViewBag.ClientId;
 }
+@model List<IdsServer.Models.ApplicationRole>
 <h1>Roles</h1>
-<a asp-action="Create" asp-route-id="@clientId" >Create</a>
+<a asp-action="Create" asp-route-clientId="@clientId" >Create</a>
+@if(Model!=null){
+   @foreach (var item in Model)
+   {
+      <table>
+         <tr>
+            <td>@item.Name</td>
+         </tr>
+      </table>
+   }
+
+}

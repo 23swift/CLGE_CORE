@@ -146,6 +146,7 @@ h6,
     font-weight: 400;
     line-height: 1.1;
     color: #FFB20C;
+    padding-left: 3px;
 }
 
 .dashhead-title {
@@ -375,4 +376,8 @@ select.form-control {
 }
 td a i {
     color: #043673 !important;
+}
+.list-group ul{
+
+    padding-bottom: 10px !important;
 }

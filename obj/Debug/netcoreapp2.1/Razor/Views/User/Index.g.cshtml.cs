@@ -66,7 +66,7 @@ using IdentityServer4.AspNetIdentity;
             WriteLiteral("\n<div class=\"card bg-light mb-3\" >\n  <div class=\"card-header bg-primary\"><h3>Users</h3>  \n  \n  \n  ");
             EndContext();
             BeginContext(211, 401, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "118bf75f57274ef0b2644d5eaf12d20e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "10430bc28c4d4eacabd178285b4b6d7c", async() => {
                 BeginContext(237, 368, true);
                 WriteLiteral(@"
       <label class=""sr-only"" for=""inlineFormInputGroupUsername2"">Username</label>
@@ -97,7 +97,7 @@ using IdentityServer4.AspNetIdentity;
             WriteLiteral("\n  </div>\n  <div class=\"card-body\">\n    ");
             EndContext();
             BeginContext(652, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "612b9601bd6e45129a5371077aa81378", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0658f2f9257d458aa5c5a6701f1b2c0d", async() => {
                 BeginContext(706, 35, true);
                 WriteLiteral("<i class=\"fa fa-plus\"></i> Add User");
                 EndContext();
@@ -173,7 +173,7 @@ using IdentityServer4.AspNetIdentity;
             WriteLiteral("</td>\n        <td>ITD</td>\n        <td>Admin</td>\n        <td> ");
             EndContext();
             BeginContext(1255, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7704bf5c42b04b209511479ccb482685", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4721bc54fc04159ade6c96b3ef0bb91", async() => {
                 BeginContext(1304, 26, true);
                 WriteLiteral("<i class=\"fa fa-edit\"></i>");
                 EndContext();

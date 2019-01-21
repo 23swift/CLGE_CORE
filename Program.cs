@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace IdsServer
@@ -21,7 +22,9 @@ namespace IdsServer
             var host = CreateWebHostBuilder(args).Build();
              if (seed)
             {
-                SeedData.EnsureSeedData(host.Services);
+                var config = host.Services.GetRequiredService<IConfiguration>();
+                var connectionString = config.GetConnectionString("DefaultConnection");
+                SeedData.EnsureSeedData(connectionString);
                 SeedConfig.EnsureSeedData(host.Services);
                 return;
             }
