@@ -122,38 +122,48 @@ namespace IdsServer
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddUserApplication()
+        public async Task<IActionResult> AddUserApplication(int Id)
         {
             //TODO: Implement Realistic Implementation
             ViewBag.header="Assign Application to User";
             var applicationList=await _configDbContext.Clients.ToListAsync();
-            List<IdsServer.Models.SystemEditorViewModel> systemList=new List<SystemEditorViewModel>();
+            IdsServer.Models.SystemSelectionViewModel selectionViewModel=new SystemSelectionViewModel();
+            
 
             foreach (var item in applicationList)
             {
-                systemList.Add(new Models.SystemEditorViewModel{
-                  Name=item.ClientName,
+                selectionViewModel.Application.Add(new Models.SystemEditorViewModel{
+                  Name=item.ClientName,ClientId=item.ClientId,
                   Id=item.Id
                 });
             }
           
          
          
-          return View(systemList);
+          return View(selectionViewModel);
         }
-        [HttpGet]
-    public async Task<IActionResult> AddUserApplication(IdsServer.Models.SystemEditorViewModel[] systemList)
+        [HttpPost]
+    public async Task<IActionResult> AssignApplication(IdsServer.Models.SystemSelectionViewModel selection,int Id)
             {
                 //TODO: Implement Realistic Implementation
                 ViewBag.header="Assign Application to User";
+              var appUser= await _userManager.Users.Include(c=>c.Clients).FirstAsync(u=>u.Id.Equals((int) Id));
+              
                 PersistedGrant pg=new PersistedGrant();
 
-                foreach (var item in systemList)
+                foreach (var item in selection.Application)
                 {
-                    pg.ClientId=item.Id.ToString();
-                   await _persistedDbContext.PersistedGrants.AddAsync(pg);
+                  //   pg.ClientId=item.Id.ToString();
+                  //  _persistedDbContext.PersistedGrants.Add(pg);
+                    if(item.Selected){
+                      appUser.Clients.Add(new AppUserClient{
+                        ClientId=item.ClientId
+                        
+                      });
+                    }
                 }
-               await _persistedDbContext.SaveChangesAsync();
+              await _userManager.UpdateAsync(appUser);
+              //  await _persistedDbContext.SaveChangesAsync();
               //  _persistedDbContext.PersistedGrants.
               
             

@@ -1,25 +1,34 @@
 @{
     Layout="_UserLayout";
      var Id = ViewContext.RouteData.Values["Id"];
+     var en=Model.Application.GetEnumerator();
 }
-@model List<IdsServer.Models.SystemEditorViewModel>
+@model IdsServer.Models.SystemSelectionViewModel
 
 <h2>Applications</h2>
-<form asp-action="AddUserApplication" method="get">
+<form asp-action="AssignApplication" method="post" asp-route-Id="@Id">
+   
         <ul class="list-group">
-            @foreach (var item in Model)
+           
+           @for(var i=0;en.MoveNext();i++)
+       
             {
+               
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                    
                      <div class="  form-check pull-right">
-                         <input class="form-check-input" name="systemList" type="checkbox" value="@item.Selected" checked="@item.Selected">
-                            <label class="form-check-label">
-                            
-                            @item.Name
-                            </label>
+                         
+                            @Html.CheckBoxFor(m =>Model.Application[i].Selected)
+                            <label>@Model.Application[i].Name</label>
+                           @Html.HiddenFor(m => Model.Application[i].Name)
+                           @Html.HiddenFor(m => Model.Application[i].Id)
+                           @Html.HiddenFor(m => Model.Application[i].ClientId)
                 </div>
                  
                 </li>
+
+              
+                
             }
         
         
