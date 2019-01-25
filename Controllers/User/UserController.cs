@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityModel;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdsServer.Models;
@@ -16,17 +18,19 @@ namespace IdsServer
     
     public class UserController : Controller
     {
+        private readonly RoleManager<ApplicationRole> _roleMager;
        private readonly UserManager<ApplicationUser> _userManager;
        private readonly IConfigurationDbContext _configDbContext;
        private readonly IPersistedGrantDbContext _persistedDbContext;
 
       //  private readonly UserStore<ApplicationUser> _userStore;
         public UserController( UserManager<ApplicationUser> userManager,IConfigurationDbContext configDbContext,
-        IPersistedGrantDbContext persistedDbContext) {
+        IPersistedGrantDbContext persistedDbContext,RoleManager<ApplicationRole> roleMager) {
 
              _userManager = userManager;
              _configDbContext=configDbContext;
              _persistedDbContext=persistedDbContext;
+             _roleMager=roleMager;
          }
         public async Task<IActionResult> Index()
         {
@@ -104,7 +108,6 @@ namespace IdsServer
         }
          public async Task<IActionResult> Roles()
         {
-            //TODO: Implement Realistic Implementation
           await Task.Yield();
           ViewBag.tabId="roles";
          
@@ -153,11 +156,12 @@ namespace IdsServer
 
                 foreach (var item in selection.Application)
                 {
+                  
                   //   pg.ClientId=item.Id.ToString();
                   //  _persistedDbContext.PersistedGrants.Add(pg);
                     if(item.Selected){
                       appUser.Clients.Add(new AppUserClient{
-                        ClientId=item.ClientId
+                        ClientId=item.Id
                         
                       });
                     }
@@ -180,13 +184,44 @@ namespace IdsServer
          
           return View();
         }
-          public async Task<IActionResult> AddUserRole()
+          public async Task<IActionResult> AddUserRole(int? clientId)
         {
-            //TODO: Implement Realistic Implementation
+             //TODO: Implement Realistic Implementation
+             ViewBag.ClientId=(int)clientId;
+              var roleListViewModel= new List<RoleEditorViewModel>();
+             var roleList=_roleMager.Roles.Where(r=>r.Client.Equals((int)clientId)).ToList();
+             foreach (var item in roleList)
+             {
+                 roleListViewModel.Add( new RoleEditorViewModel{
+                    Name=item.Name,Id=item.Id
+
+                 } );
+             }
+
           await Task.Yield();
+          
          
          
-          return View();
+          return View(roleListViewModel);
+        }
+
+        [HttpPost]
+           public async Task<IActionResult> AddUserRole(List<RoleEditorViewModel> roles,int? Id)
+        {
+          var user=_userManager.FindByIdAsync(((int)Id).ToString()).Result;
+         
+            foreach (var item in roles)
+            {
+              if(item.Selected){
+                
+               await _userManager.AddToRoleAsync(user,item.Name);       
+                await  _userManager.AddClaimAsync(user, new Claim(JwtClaimTypes.Role, item.Name));
+              }
+                
+            }
+          
+
+          return RedirectToAction("Applications",new{Id=Id});
         }
       
     }

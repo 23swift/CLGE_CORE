@@ -23,4 +23,21 @@ namespace IdsServer.Models
             public string Name { get; set; }
             public string ClientId { get; set; }
         }
+
+        public class RoleSelectionViewModel
+        {
+            public List<RoleEditorViewModel> Role { get; set; }
+            public RoleSelectionViewModel()
+            {
+                this.Role = new List<RoleEditorViewModel>();
+            }
+          
+        }
+        public class RoleEditorViewModel
+        {
+            public bool Selected { get; set; }
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string ClientId { get; set; }
+        }
 }

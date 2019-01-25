@@ -1,6 +1,45 @@
 @{
     Layout="_UserLayout";
      var Id = ViewContext.RouteData.Values["Id"];
+      int clientId = ViewBag.ClientId;
+      var en=Model.GetEnumerator();
 }
-<h1>Add User Role</h1>
-<a  asp-action="Applications" asp-route-id="@Id"><-Back</a>
+@model List<IdsServer.Models.RoleEditorViewModel>
+<h1>Available Roles</h1>
+
+
+
+<form asp-action="AddUserRole" method="post" asp-route-Id="@Id">
+   
+        <ul class="list-group">
+           
+           @for(var i=0;en.MoveNext();i++)
+       
+            {
+               
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                   
+                     <div class="  form-check pull-right">
+                         
+                            @Html.CheckBoxFor(m =>Model[i].Selected)
+                            <label>@Model[i].Name</label>
+                           @Html.HiddenFor(m => Model[i].Name)
+                           @Html.HiddenFor(m => Model[i].Id)
+                           @Html.HiddenFor(m => Model[i].ClientId)
+                </div>
+                 
+                </li>
+
+              
+                
+            }
+        
+        
+        </ul>
+<div id="" class="row">
+                <div class="col-md-6">
+                        <a asp-action="Index" class="btn btn-default" asp-route-id="@Id">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                 
+                </div>
+</form>

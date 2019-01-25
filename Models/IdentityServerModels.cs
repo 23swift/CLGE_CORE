@@ -33,10 +33,9 @@ namespace IdsServer.Models
     {
         public int id{get;set;}
         public virtual ApplicationUser ApplicationUser{get;set;}
-
-
+        
         //[ForeignKey("Client")]
-        public string ClientId{get;set;}
+        public int ClientId{get;set;}
         // public virtual Client Client{get;set;}
 
     }

@@ -4,5 +4,9 @@
 --     delete from ClientScopes
 
 
-insert into ClientScopes(Scope,ClientId)
-values("access.profile",3);
+-- delete from AspNetUserClaims
+-- where Id=18
+
+
+insert into AspNetRoleClaims(RoleId,claimType,ClaimValue)
+values(1, "AO Encoder","AO Dashboard")
