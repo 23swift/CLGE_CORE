@@ -16,6 +16,9 @@ using Microsoft.EntityFrameworkCore;
 using IdentityModel;
 using System.Reflection;
 using IdentityServer4.Stores;
+using IdentityServer4.Services;
+
+
 namespace IdsServer
 {
      public class Startup
@@ -97,6 +100,7 @@ namespace IdsServer
                     options.ClientId = "copy client ID from Google here";
                     options.ClientSecret = "copy client secret from Google here";
                 });
+                services.AddTransient<IProfileService, ProfileService>();
         }
 
         public void Configure(IApplicationBuilder app)

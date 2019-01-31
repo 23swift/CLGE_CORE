@@ -215,7 +215,7 @@ namespace IdsServer
               if(item.Selected){
                 
                await _userManager.AddToRoleAsync(user,item.Name);       
-                await  _userManager.AddClaimAsync(user, new Claim(JwtClaimTypes.Role, item.Name));
+                await  _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, item.Name));
               }
                 
             }

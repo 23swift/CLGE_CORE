@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdsServer.Models;
@@ -47,6 +48,9 @@ namespace IdsServer
       role.Client=ClientId;
       // TODO Remove
       await _roleMager.CreateAsync(role);
+      await _roleMager.AddClaimAsync(role, new Claim("Permission", "projects.view"));
+        await _roleMager.AddClaimAsync(role, new Claim("Permission", "projects.create"));
+        await _roleMager.AddClaimAsync(role, new Claim("Permission", "projects.update"));
       // await _roleMager.UpdateAsync(role);
       
     

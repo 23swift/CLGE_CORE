@@ -17,7 +17,7 @@ namespace IdsServer
              var accessProfile = new IdentityResource(
                 name: "access.profile",
                 displayName: "Access Profile",
-                claimTypes: new[] { "system", "group"});
+                claimTypes: new[] { "system", "group","role"});
                 
             return new List<IdentityResource>
             {
@@ -25,8 +25,8 @@ namespace IdsServer
                 new IdentityResources.Profile(),
                 accessProfile,
                 new IdentityResource {
-                Name = "role",
-                UserClaims = new List<string> {"role"}
+                Name = "role", DisplayName="User Roles",
+                UserClaims = new List<string> {"role"},Required=true
                 }
                  
             };
@@ -92,10 +92,12 @@ namespace IdsServer
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         
-                        "api1","access.profile","role"
+                        
+                        "api1","access.profile","role","token"
                     },
 
-                    AllowOfflineAccess = true
+                    AllowOfflineAccess = true,
+                    AllowAccessTokensViaBrowser = true
                 },
                 // JavaScript Client
                 new Client
