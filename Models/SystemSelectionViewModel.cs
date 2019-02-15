@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace IdsServer.Models
 {
 
@@ -39,5 +41,16 @@ namespace IdsServer.Models
             public int Id { get; set; }
             public string Name { get; set; }
             public string ClientId { get; set; }
+        }
+
+        public class ModuleSelectListViewModel
+        {
+                // public ModuleSelectListViewModel(){
+                //     this.SelectedModules=new List<SelectListItem>();
+                // }
+            
+            public int roleId { get; set; }
+           public List<SelectListItem> SelectedModules{get;set;}
+            
         }
 }

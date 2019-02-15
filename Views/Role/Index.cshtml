@@ -1,17 +1,38 @@
 @{
+   Layout = "_SystemTabedLayout";
    int clientId = ViewBag.ClientId;
 }
 @model List<IdsServer.Models.ApplicationRole>
-<h1>Roles</h1>
-<a asp-action="Create" asp-route-clientId="@clientId" >Create</a>
+<h1><a asp-controller="System">@ViewBag.ClientName</a></h1>
+<!-- <H2>New Role</H2> -->
+<a asp-action="Create" asp-route-clientId="@clientId" class="btn btn-warning btn-sm"> <i id="" class="fa fa-plus fa-x2"></i> Create New Role</a>
 @if(Model!=null){
-   @foreach (var item in Model)
-   {
-      <table>
+   <table id="" class="table">
+      <thead>
          <tr>
-            <td>@item.Name</td>
+               <th>Role</th>
+               <th></th>
+               <th></th>
+               
          </tr>
-      </table>
-   }
+      </thead>
+      <tbody>
+         
+
+         @foreach (var item in Model)
+         {
+               <tr>
+                  <td>@item.Name</td>
+                  
+                  <td>
+                     <a asp-route-roleId="@item.Id" asp-route-clientId="@ViewBag.ClientId" asp-action="RoleAccess"> <i class="fa fa-user-lock fa-2x "></i> Access</a>
+
+                  </td>
+                  <td></td>
+               </tr>
+               
+         }
+      </tbody>
+   </table>
 
 }

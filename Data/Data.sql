@@ -18,10 +18,12 @@
 -- set RedirectUri="http://localhost:5002/"
 -- where ClientId==3;
 
-update ClientPostLogoutRedirectUris
-set PostLogoutRedirectUri="http://localhost:5002/"
-where ClientId==3;
+-- update ClientPostLogoutRedirectUris
+-- set PostLogoutRedirectUri="http://localhost:5002/"
+-- where ClientId==3;
 
 -- update Clients
 -- set ClientUri="http://localhost:5002/"
 -- where id==3
+
+delete from aspnetRoleClaims

@@ -31,7 +31,7 @@
                                             <br>
                                             <span  class="pull-right"></span>
                                         </div>
-
+                                        
                                 </div>
                     </div>
                                 <div class="alert alert-warning" >
@@ -96,46 +96,13 @@
                                 <p >
                                     <small >Only authorized employees may use this system. It is an offense to log on to the system if you are unauthorized or to use it for illicit purposes. Access to this system is being monitored.</small>
                                 </p>
+                                 
                              </div>
                 </div>
             </div>
              
 
-                                @if (Model.VisibleExternalProviders.Any())
-                                {
-                                    <div class="col-md-6 col-sm-6 external-providers">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">External Login</h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <ul class="list-inline">
-                                                    @foreach (var provider in Model.VisibleExternalProviders)
-                                                    {
-                                                        <li>
-                                                            <a class="btn btn-default"
-                                                            asp-action="ExternalLogin"
-                                                            asp-route-provider="@provider.AuthenticationScheme"
-                                                            asp-route-returnUrl="@Model.ReturnUrl">
-                                                                @provider.DisplayName
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                
-                                }
-
-                                @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
-                                {
-                                    <div class="alert alert-warning">
-                                        <strong>Invalid login request</strong>
-                                        There are no login schemes configured for this client.
-                                    </div>
-                                }
+                               
 
           <div class="col-md-4">
         <section id="socialLoginForm">
@@ -146,13 +113,23 @@
                 <p>
                     There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                     for details on setting up this ASP.NET application to support logging in via external services.
+                   
                 </p>
+                
             </div>
-            <h3>@Model.ClientName</h3>
+            <h1>@Model.ClientName</h1>
 
             
                         <!-- {{model.errorMessage}} -->
                         @Html.Partial("_ValidationSummary")
+
+                     <p>Powered By:
+                                        <h3>
+                                        <img   src="~/icon.jpg">
+                                        Identity Server 4
+                                        @*<small>(build {version})</small>*@
+                                    </h3>
+                                </p>
                   
         </section>
     </div>                      

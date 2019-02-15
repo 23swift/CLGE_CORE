@@ -240,9 +240,10 @@ namespace IdentityServer4.Quickstart.UI
                 }).ToList();
 
             var allowLocal = true;
+            Client client= null;
             if (context?.ClientId != null)
             {
-                var client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
+                client = await _clientStore.FindEnabledClientByIdAsync(context.ClientId);
                 if (client != null)
                 {
                     allowLocal = client.EnableLocalLogin;
@@ -260,7 +261,8 @@ namespace IdentityServer4.Quickstart.UI
                 EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
                 ReturnUrl = returnUrl,
                 Username = context?.LoginHint,
-                ExternalProviders = providers.ToArray()
+                ExternalProviders = providers.ToArray(),
+                ClientName=client.ClientName
             };
         }
 

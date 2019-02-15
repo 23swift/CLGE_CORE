@@ -37,7 +37,9 @@ namespace IdsServer
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name; 
             var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(connectionString));
+                options.UseSqlite(connectionString)
+                // options.UseSqlServer(connectionString)
+                );
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -66,7 +68,10 @@ namespace IdsServer
                 {
                     options.ConfigureDbContext = configBuilder =>
                         configBuilder.UseSqlite(connectionString,
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                            sql => sql.MigrationsAssembly(migrationsAssembly)
+                            
+                            );
+                            
                             
                             
                 }) 

@@ -1,0 +1,36 @@
+
+@{
+
+     Layout = "_SystemTabedLayout";
+}
+@model List<IdentityServer4.EntityFramework.Entities.ClientProperty>
+
+<!-- <H2>New Module</H2> -->
+<a asp-action="NewModule" asp-route-clientId="@ViewBag.clientId"  class="btn btn-sm btn-warning" ><i class="fa fa-plus"></i> Create New Module</a>
+<table id="" class="table">
+    <thead>
+        <tr>
+            <th>Module</th>
+            <th>code</th>
+            <th></th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+                <td>
+                    <a> <i class="fa fa-edit"></i></a> | <a> <i class="fa fa-trash"></i></a>
+
+                </td>
+                
+            </tr>
+            
+        }
+    </tbody>
+</table>

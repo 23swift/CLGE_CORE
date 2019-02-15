@@ -1,0 +1,17 @@
+@{
+    Layout = "_Layout";
+    string header=ViewBag.header==null?string.Empty:ViewBag.header;
+   
+}
+
+
+<div class="card">
+ 
+  <div class="card-body">
+      <h1 class="text-primary">@ViewBag.systemName</h1>
+                     <div class="container-fluid">
+                      @RenderBody()
+                  </div>
+      <!-- <a asp-controller="System" asp-action="Index" class="btn float-right">Back</a> -->
+      </div>
+</div>

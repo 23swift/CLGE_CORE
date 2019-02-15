@@ -11,8 +11,7 @@
         <tr>
             <th>System</th>
             <th></th>
-            <th></th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -23,16 +22,12 @@
             <tr>
                 <td>@item.ClientName</td>
                 <td>
-                    <a> <i class="fa fa-users fa-2x"></i>Groups</a>
+                    <a asp-action="Modules" asp-route-clientId="@item.Id" class="btn btn-sm"> <i class="fa fa-sitemap fa-2x"></i></a>
+
+                    <a asp-action="Modules" asp-route-clientId="@item.Id"  class="btn btn-sm"> <i class="fa fa-trash fa-2x"></i></a>
 
                 </td>
-                <td><a asp-controller="Role" asp-action="Index" asp-route-clientId="@item.Id" >
-                    <i class="fa fa-user-tag fa-2x"></i>
-                    Roles</a></td>
-                <td>
-                    <a>Edit</a> |
-                    <a>Delete</a>
-                </td>
+                
             </tr>
             
         }

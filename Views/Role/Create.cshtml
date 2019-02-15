@@ -1,31 +1,28 @@
 @{
+    Layout = "_SystemTabedLayout";
    int clientId = ViewBag.ClientId;
 }
 @model IdsServer.Models.ApplicationRole
-<h1>Create Role</h1>
 
+<div id="" class="row">
+    <div id="" class="col-md-4">
+        
 
-<div class="card bg-secondary mb-3" >
-  <div class="card-header">
-      <div id="" class="row">
-          <i id="" class="fa fa-user-tag text-primary fa-3x col-md-6"></i> <h4 class="col-md-5" >New Role</h4>
-      </div>
-      
-  </div>
-  <div class="card-body">
             <form asp-action="Create" method="post" asp-route-ClientId="@ViewBag.ClientId">
+                <fieldset>
+                    <legend>Create Role</legend>
             <!-- <input type="hidden" name="ClientId" value="@ViewBag.ClientId"> -->
             
             <div id="" class="form-group">
                             <label for="UserName">Role Name</label>
                             <input type="text" asp-for="Name" class="form-control">
                         
-                        </div>
+            </div>
 
             <div id="" class="row">
                 <div class="col-md-6">
-                        <a asp-action="Index" class="btn btn-default" asp-route-clientId="@clientId">Cancel</a>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                        <a asp-action="Index" class="btn btn-default " asp-route-clientId="@clientId">Cancel</a>
+                <button type="submit" class="btn btn-primary ">Submit</button>
                  
                 </div>
                 <div class=" col-md-6 form-check pull-right">
@@ -35,8 +32,11 @@
                             </label>
             </div>
 
-            </div>
             
+                </fieldset>
             </form>
 
-  </div>
+
+  
+    </div>
+</div>

@@ -1,0 +1,61 @@
+@{
+
+    var en=Model.SelectedModules.GetEnumerator();
+}
+@model IdsServer.Models.ModuleSelectListViewModel
+
+<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <form asp-action="CreateRoleAccess" method="post"  asp-route-ClientId="@ViewBag.ClientId" asp-route-roleId="@ViewBag.roleId">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Please select modules</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+       
+                  <fieldset>
+                      <legend>@ViewBag.systemName Modules</legend>
+                  </fieldset>
+                  <input type="hidden" asp-for="roleId" />
+                  <ul class="list-group" >
+                
+                @for (int i=0;en.MoveNext();i++)
+                
+            
+                  {
+                    
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        
+                          <div class="  form-check pull-right">
+                              
+                                  <input type="checkbox" asp-for="@Model.SelectedModules[i].Selected" >
+                                  <input type="hidden" asp-for="@Model.SelectedModules[i].Value" />
+                                   <input type="hidden" asp-for="@Model.SelectedModules[i].Text" />
+                                  <label>@Model.SelectedModules[i].Text</label>
+                                
+                      </div>
+                      
+                      </li>
+
+                    
+                      
+                  }
+              
+              
+              </ul>
+
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>

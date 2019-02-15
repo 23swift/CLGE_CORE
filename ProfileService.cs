@@ -37,8 +37,15 @@ namespace IdsServer
              var claimsNames = new List<string>();
                 claimsNames.AddRange(new[]{
                     
-                   "Permission",
-                    "username",
+                //    "Permission",
+                //     "username",
+                "dashboard",
+                "route",
+                "rank",
+                "group",
+                "system",
+                "userId",
+                
                    
                     JwtClaimTypes.Role,
                     JwtClaimTypes.Name
@@ -48,8 +55,8 @@ namespace IdsServer
                 context.AddRequestedClaims(context.Subject.Claims);
                 var claims = new List<Claim>();
                 claims.Add(new Claim("username", user.UserName));
-                claims.Add(new Claim( JwtClaimTypes.Role, "AO Checker" ));
-                 claims.Add(new Claim( JwtClaimTypes.Name, "Bob Smith" ));
+                // claims.Add(new Claim( JwtClaimTypes.Role, "AO Checker" ));
+                //  claims.Add(new Claim( JwtClaimTypes.Name, "Bob Smith" ));
               
                 // context.AddRequestedClaims(roleClaims);
                 // context.IssuedClaims.AddRange(claims);

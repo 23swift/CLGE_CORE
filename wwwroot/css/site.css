@@ -145,7 +145,7 @@ h6,
     font-family: inherit;
     font-weight: 400;
     line-height: 1.1;
-    color: #FFB20C;
+    color: #043673;
     padding-left: 3px;
 }
 
@@ -280,9 +280,9 @@ select.form-control {
     margin-top: 30px;
     width: 100%;
 }
-.card {
+/* .card {
     width: 100%;
-}
+} */
 .front-login .fas {
     color: whitesmoke;
 }
@@ -293,7 +293,7 @@ select.form-control {
 ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     
-    color: red !important;
+    /* color: red !important; */
     opacity: 1;
     /* Firefox */
 }
@@ -344,9 +344,9 @@ select.form-control {
     color: #FFB20C;
     opacity: .8;
 }
-.text-primary {
+/* .text-primary {
     color: #043673 !important;
-}
+} */
 .card-header h4 {
     color: #043673 !important;
 }
@@ -359,7 +359,7 @@ select.form-control {
 .form-control {
     margin-top: 0;
     display: block;
-    width: 100%;
+    /* width: 100%; */
     height: calc(.5rem + 0rem);
     padding: .7rem 0;
     font-size: 0.8125rem;
@@ -380,4 +380,8 @@ td a i {
 .list-group ul{
 
     padding-bottom: 10px !important;
+}
+.container-fluid{
+
+    margin-top: 20px;
 }

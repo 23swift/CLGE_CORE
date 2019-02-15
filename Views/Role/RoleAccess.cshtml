@@ -1,0 +1,45 @@
+@{
+     Layout = "_SystemTabedLayout";
+      IdsServer.Models.ModuleSelectListViewModel  moduleList=ViewBag.moduleList;
+     
+}
+@model List< IdsServer.Models.ApplicationRoleClaim>
+<h2>@ViewBag.roleName Access</h2>
+<!-- <a href="" id="" ><i id="" class="fa fa-plus"></i> Create</a> -->
+
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+    <i id="" class="fa fa-plus"></i>
+  Select Modules
+</button>
+
+
+
+<table id="" class="table">
+    <thead>
+
+    <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      @if(Model!=null){
+          @foreach (var item in Model)
+              {
+                  <tr>
+                      <td>@item.ClaimType</td>
+                      <td>@item.Name</td>
+                      <td>@item.ClaimValue</td>
+                  </tr>
+              }
+
+      }
+       
+    </tbody>
+    
+
+</table>
+
+@await Html.PartialAsync("_PartialModuleSelection", moduleList)

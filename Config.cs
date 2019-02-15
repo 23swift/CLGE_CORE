@@ -17,7 +17,7 @@ namespace IdsServer
              var accessProfile = new IdentityResource(
                 name: "access.profile",
                 displayName: "Access Profile",
-                claimTypes: new[] { "system", "group","role"});
+                claimTypes: new[] { "system", "group","role","rank","userId"});
                 
             return new List<IdentityResource>
             {
@@ -44,35 +44,35 @@ namespace IdsServer
         {
             return new List<Client>
             {
-                new Client
-                {
-                    ClientId = "client",
+                // new Client
+                // {
+                //     ClientId = "client",
 
-                    // no interactive user, use the clientid/secret for authentication
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                //     // no interactive user, use the clientid/secret for authentication
+                //     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
-                    // secret for authentication
-                    ClientSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
+                //     // secret for authentication
+                //     ClientSecrets =
+                //     {
+                //         new Secret("secret".Sha256())
+                //     },
 
-                    // scopes that client has access to
-                    AllowedScopes = { "api1" }
-                },
-                // resource owner password grant client
-                new Client
-                {
-                    ClientId = "ro.client",
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                //     // scopes that client has access to
+                //     AllowedScopes = { "api1" }
+                // },
+                // // resource owner password grant client
+                // new Client
+                // {
+                //     ClientId = "ro.client",
+                //     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
 
-                    ClientSecrets =
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    AllowedScopes = { "api1" }
-                },
-                // OpenID Connect hybrid flow client (MVC)
+                //     ClientSecrets =
+                //     {
+                //         new Secret("secret".Sha256())
+                //     },
+                //     AllowedScopes = { "api1" }
+                // },
+                // // OpenID Connect hybrid flow client (MVC)
                 new Client
                 {
                     ClientId = "map",
