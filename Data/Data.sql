@@ -26,4 +26,10 @@
 -- set ClientUri="http://localhost:5002/"
 -- where id==3
 
-delete from aspnetRoleClaims
+
+-- update Clients
+-- set RequireConsent=0
+
+update ClientPostLogoutRedirectUris
+set PostLogoutRedirectUri="http://localhost:5000/signout-callback-oidc"
+where ClientId=1

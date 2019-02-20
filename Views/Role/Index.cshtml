@@ -25,8 +25,11 @@
                   <td>@item.Name</td>
                   
                   <td>
-                     <a asp-route-roleId="@item.Id" asp-route-clientId="@ViewBag.ClientId" asp-action="RoleAccess"> <i class="fa fa-user-lock fa-2x "></i> Access</a>
+                     <a asp-route-roleId="@item.Id" asp-route-clientId="@ViewBag.ClientId" asp-action="Edit"> <i class="fa fa-edit"></i> Edit</a>
+                     |
+                     <a asp-route-roleId="@item.Id" asp-route-clientId="@ViewBag.ClientId" asp-action="RoleAccess"> <i class="fa fa-user-lock "></i> Access</a>
 
+                    
                   </td>
                   <td></td>
                </tr>

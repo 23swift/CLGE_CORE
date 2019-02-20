@@ -3,6 +3,7 @@
 
 
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace IdentityServer4.Quickstart.UI
 {
     [SecurityHeaders]
-    [AllowAnonymous]
+    // [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
@@ -22,7 +23,7 @@ namespace IdentityServer4.Quickstart.UI
             _interaction = interaction;
             _environment = environment;
         }
-
+        // [Authorize]
         public IActionResult Index()
         {
             if (_environment.IsDevelopment())
@@ -55,6 +56,19 @@ namespace IdentityServer4.Quickstart.UI
             }
 
             return View("Error", vm);
+        }
+        public  async Task<IActionResult>  Logout()
+        {
+          //TODO: Implement Realistic Implementation
+           await HttpContext.SignOutAsync();
+          return Challenge(new AuthenticationProperties{
+              RedirectUri="/"
+          },"Cookies", "oidc");
+        
+        }
+        public  IActionResult  LogoutPage()
+        {
+            return View();
         }
     }
 }

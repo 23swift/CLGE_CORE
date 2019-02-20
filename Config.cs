@@ -44,34 +44,33 @@ namespace IdsServer
         {
             return new List<Client>
             {
-                // new Client
-                // {
-                //     ClientId = "client",
+                new Client
+                {
+                    ClientId = "clge",
+                    ClientName = "CGL Exchange",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
 
-                //     // no interactive user, use the clientid/secret for authentication
-                //     AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
 
-                //     // secret for authentication
-                //     ClientSecrets =
-                //     {
-                //         new Secret("secret".Sha256())
-                //     },
+                    RedirectUris           = { "http://localhost:5000/signin-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:5000/signout-callback-oidc" },
+                    
 
-                //     // scopes that client has access to
-                //     AllowedScopes = { "api1" }
-                // },
-                // // resource owner password grant client
-                // new Client
-                // {
-                //     ClientId = "ro.client",
-                //     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        
+                        
+                        "api1","access.profile","role","token"
+                    },
 
-                //     ClientSecrets =
-                //     {
-                //         new Secret("secret".Sha256())
-                //     },
-                //     AllowedScopes = { "api1" }
-                // },
+                    AllowOfflineAccess = true,
+                    AllowAccessTokensViaBrowser = true
+                },
                 // // OpenID Connect hybrid flow client (MVC)
                 new Client
                 {

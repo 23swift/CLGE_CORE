@@ -17,7 +17,8 @@ using IdentityModel;
 using System.Reflection;
 using IdentityServer4.Stores;
 using IdentityServer4.Services;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
 
 namespace IdsServer
 {
@@ -106,6 +107,45 @@ namespace IdsServer
                     options.ClientSecret = "copy client secret from Google here";
                 });
                 services.AddTransient<IProfileService, ProfileService>();
+
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = "Cookies";
+                    options.DefaultChallengeScheme = "oidc";
+                })
+                .AddCookie("Cookies")
+                
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.SignInScheme = "Cookies";
+
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ClientId = "clge";
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "code id_token token";
+
+                    options.SaveTokens = true;
+                    options.GetClaimsFromUserInfoEndpoint = true;
+
+                    options.Scope.Add("access.profile");
+                    options.Scope.Add("role");
+                   
+                    options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            NameClaimType = JwtClaimTypes.Name,
+                            RoleClaimType = JwtClaimTypes.Role
+                            //NameClaimType = ClaimTypes.Name,
+                            //RoleClaimType = ClaimTypes.Role
+                        };
+                // options.ClaimActions.MapUniqueJsonKey("role", "role");
+                options.ClaimActions.MapJsonKey("role", "role");
+                options.ClaimActions.MapJsonKey("Permission", "Permission");
+               
+                    // options.ClaimActions.MapJsonKey("website", "website");
+                    
+            });
         }
 
         public void Configure(IApplicationBuilder app)
@@ -122,6 +162,23 @@ namespace IdsServer
 
             app.UseStaticFiles();
             app.UseIdentityServer();
+            app.UseAuthentication();
+           
+            app.UseCookiePolicy();
+                                app.Use(async (context, next) =>
+                                {
+                                    if (!context.User.Identity.IsAuthenticated)
+                                    {
+                                        await context.ChallengeAsync("oidc",
+                                        new AuthenticationProperties { RedirectUri = "/" });
+
+                                        // await context.ChallengeAsync("oidc");
+                                    }
+                                    else
+                                    {
+                                        await next();
+                                    }
+                    });
             app.UseMvcWithDefaultRoute();
         }
     }
