@@ -1,34 +1,111 @@
-﻿@model LoggedOutViewModel
+﻿
 
-@{ 
-    // set this so the layout rendering sees an anonymous user
-    ViewData["signed-out"] = true;
+@{
+    Layout = "";
+     ViewData["signed-out"] = true;
 }
 
-<div class="page-header logged-out">
-    <h1>
-        Logout
-        <small>You are now logged out</small>
-    </h1>
+@model LoggedOutViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IdentityServer4</title>
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+     <!-- <link rel="stylesheet" href="~/css/materia/bootstrap.css" /> -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
 
-    @if (Model.PostLogoutRedirectUri != null)
-    {
-        <div>
-            Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri">here</a> to return to the
-            <span>@Model.ClientName</span> application.
-        </div>
-    }
 
-    @if (Model.SignOutIframeUrl != null)
-    {
-        <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
-    }
+
+
+
+ <div class="container-fluid">
+        <div class="row">
+
+      
+            <div class="col-sm-12 col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Login</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="row">
+                                <div class="col-sm-12 col-xs-12" >
+
+                                        <div>
+
+                                            <img id="bdoLogoWeFind" alt="BDO" src="/images/bdoLogo.png">&nbsp;
+                                        
+                                            <h3 class="float-right">
+                                                <strong >CLG</strong>
+                                                <small >Exchange <span ><strong>1.0.0</strong></span></small>
+                                            </h3>
+                                            <br>
+                                            <span  class="pull-right"></span>
+                                        </div>
+                                        
+                                </div>
+                    </div>
+                                <div class="alert alert-warning" >
+                                    <strong >System Description: </strong>
+                                    <p>A common request processing System for Consumer loans group.</p>
+
+                                </div>
+                                     <div class="page-header logged-out">
+                                        <h1>
+                                            Logout
+                                            <small>You are now logged out</small>
+                                        </h1>
+
+                                        @if (Model.PostLogoutRedirectUri != null)
+                                        {
+                                            <div>
+                                                Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri" class="btn">  here <i class="fas fa-mouse-pointer"></i></a> to return to the
+                                                <span class="text-warning">@Model.ClientName</span> application.
+                                            </div>
+                                        }
+
+                                        @if (Model.SignOutIframeUrl != null)
+                                        {
+                                            <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+                                        }
+                                    </div>
+
+                                    @section scripts
+                                    {
+                                        @if (Model.AutomaticRedirectAfterSignOut)
+                                        {
+                                            <script src="~/js/signout-redirect.js"></script>
+                                        }
+                                    }
+  
+                                </div>
+
+                                 <div class="panel-footer">
+
+                                <p >
+                                    <small >Only authorized employees may use this system. It is an offense to log on to the system if you are unauthorized or to use it for illicit purposes. Access to this system is being monitored.</small>
+                                </p>
+                                 
+                             </div>
+                </div>
+            </div>
+             
+
+                               
+
+          
+     
+</div> 
+
 </div>
-
-@section scripts
-{
-    @if (Model.AutomaticRedirectAfterSignOut)
-    {
-        <script src="~/js/signout-redirect.js"></script>
-    }
-}
+</body>
+</html>

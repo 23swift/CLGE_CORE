@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace IdsServer {
+  [Authorize]
   public class SystemController : Controller {
 
     // ILogger<SystemController> _logger;

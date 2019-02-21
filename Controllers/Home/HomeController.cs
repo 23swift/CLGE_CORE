@@ -13,6 +13,7 @@ namespace IdentityServer4.Quickstart.UI
 {
     [SecurityHeaders]
     // [AllowAnonymous]
+     [Authorize]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
@@ -23,7 +24,7 @@ namespace IdentityServer4.Quickstart.UI
             _interaction = interaction;
             _environment = environment;
         }
-        // [Authorize]
+        [Authorize]
         public IActionResult Index()
         {
             if (_environment.IsDevelopment())
@@ -57,14 +58,12 @@ namespace IdentityServer4.Quickstart.UI
 
             return View("Error", vm);
         }
-        public  async Task<IActionResult>  Logout()
+        public  IActionResult  Logout()
         {
           //TODO: Implement Realistic Implementation
-           await HttpContext.SignOutAsync();
-          return Challenge(new AuthenticationProperties{
-              RedirectUri="/"
-          },"Cookies", "oidc");
-        
+         return SignOut(new AuthenticationProperties{
+              RedirectUri="Home/Index"
+          },"Cookies","oidc");
         }
         public  IActionResult  LogoutPage()
         {

@@ -27,9 +27,9 @@
 -- where id==3
 
 
--- update Clients
--- set RequireConsent=0
-
-update ClientPostLogoutRedirectUris
-set PostLogoutRedirectUri="http://localhost:5000/signout-callback-oidc"
-where ClientId=1
+update Clients
+set FrontChannelLogoutUri="https://localhost:5003/signout-oidc",BackChannelLogoutUri="https://localhost:5003/signout-oidc"
+where Id=2
+-- update ClientPostLogoutRedirectUris
+-- set PostLogoutRedirectUri="http://localhost:5000/signout-callback-oidc"
+-- where ClientId=1

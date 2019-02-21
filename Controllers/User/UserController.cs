@@ -7,6 +7,7 @@ using IdentityModel;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.EntityFramework.Interfaces;
 using IdsServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdsServer
 {
-    
+     [Authorize]
     public class UserController : Controller
     {
         private readonly RoleManager<ApplicationRole> _roleMager;

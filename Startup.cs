@@ -164,21 +164,17 @@ namespace IdsServer
             app.UseIdentityServer();
             app.UseAuthentication();
            
-            app.UseCookiePolicy();
-                                app.Use(async (context, next) =>
-                                {
-                                    if (!context.User.Identity.IsAuthenticated)
-                                    {
-                                        await context.ChallengeAsync("oidc",
-                                        new AuthenticationProperties { RedirectUri = "/" });
-
-                                        // await context.ChallengeAsync("oidc");
-                                    }
-                                    else
-                                    {
-                                        await next();
-                                    }
-                    });
+            //   app.Use(async (context, next) =>
+            //                                             {
+            //                                                 if (!context.User.Identity.IsAuthenticated)
+            //                                                     {
+            //                                                         await context.ChallengeAsync("oidc");
+            //                                                     }
+            //                                                     else
+            //                                                     {
+            //                                                         await next();
+            //                                                     }
+            //                                             });
             app.UseMvcWithDefaultRoute();
         }
     }

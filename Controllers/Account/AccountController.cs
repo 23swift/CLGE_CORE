@@ -157,6 +157,7 @@ namespace IdentityServer4.Quickstart.UI
         /// <summary>
         /// Show logout page
         /// </summary>
+         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
@@ -176,6 +177,7 @@ namespace IdentityServer4.Quickstart.UI
         /// <summary>
         /// Handle logout page postback
         /// </summary>
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout(LogoutInputModel model)
