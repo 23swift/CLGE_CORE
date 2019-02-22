@@ -1,0 +1,91 @@
+@{
+   string msg= ViewBag.message;
+}
+@model CLGE_CORE.Models.RegisterUserViewModel
+
+<!-- <h1>Add</h1> -->
+
+@if(ViewBag.message!=null){
+    <div class="alert alert-dismissible alert-danger">
+        <h4 class="alert-heading">Creating User Failed!</h4>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong> @ViewBag.message
+    </div>
+    
+}
+
+
+ <form asp-action="Register" method="post">
+    <div id="" class="row">
+       <div id="" class="col-md-4">        
+        <div class="card" >
+        <!-- <div class="card-header">
+            <div id="" class="row">
+                <i id="" class="fa fa-user-plus text-primary fa-3x"></i>
+            </div>
+            
+        </div> -->
+        <div class="card-body">
+        
+                    <fieldset>
+                        <legend><i id="" class="fa fa-user-plus text-primary fa-2x"></i>Register User</legend>
+
+                                
+
+                                <div id="" class="form-group"><label for="FirstName">First Name</label>
+                                    <input type="text" class="form-control" asp-for="FirstName">
+                                       <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+
+                            <div id="" class="form-group"><label for="LastName">Last Name</label>
+                                <input type="text" class="form-control" asp-for="LastName">
+                                 <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                              <div id="" class="form-group"><label for="UserId">User Id</label>
+                                <input type="text" class="form-control" asp-for="UserId">
+                                  <span asp-validation-for="UserId" class="text-danger"></span>
+                            </div>
+                             <div id="" class="form-group"><label for="Password">Password</label>
+                                <input type="password" class="form-control" asp-for="Password">
+                                 <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                             <div id="" class="form-group"><label for="ConfirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" asp-for="ConfirmPassword">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            
+
+
+
+                    </fieldset>
+            
+        </div>
+        <div class="card-footer text-muted">
+            <div id="" class="row">
+                <div id="" class="col-md-12">
+                      <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Register
+                        </button>
+                     <a asp-action="Index" class="btn  ">Cancel</a>
+
+                   
+                        <div class="form-check float-right">
+                                <label class="form-check-label text-primary"  for="Configure">
+                                <input class="form-check-input" asp-for="Configure" type="checkbox">
+                                <i class="fa fa-cogs fa-2x"></i>
+                                Configure User
+                                
+                                </label>
+                            </div>
+                   
+                </div>
+                
+        </div>
+
+  </div>
+</div>
+       </div>
+    </div>
+</form>
+

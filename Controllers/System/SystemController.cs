@@ -64,5 +64,11 @@ namespace IdsServer {
       //TODO: Implement Realistic Implementation
       return RedirectToAction("Modules",new{clientId=clientId});
     }
+
+    public IActionResult RegisterSystem()
+    {
+      //TODO: Implement Realistic Implementation
+      return View();
+    }
   }
 }

@@ -4,22 +4,25 @@
 }
 @model IdsServer.Models.ApplicationUser
 
-<div class="card bg-light mb-3" >
-  <div class="card-header bg-primary"><h3>Users</h3>  
-  
-  
-  <form class="form-inline">
-      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text"><i class="fa fa-search"></i></div>
-        </div>
-        <input type="text" class="form-control"  id="inlineFormInputGroupUsername2" placeholder="User">
+    
+    <div id="" class="row">
+      <div id="" class="col-md-12">
+         <legend><h1><i id="" class="fa fa-users text-primary"></i> Users</h1>  </legend>
+          
+            <!-- <form class="form-inline float-right">
+            <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-search"></i></div>
+              </div>
+              <input type="text" class="form-control"  id="inlineFormInputGroupUsername2" placeholder="User">
+            </div>
+          </form> -->
       </div>
-    </form>
-  </div>
-  <div class="card-body">
-    <a asp-action="Create" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add User</a>
+    </div>
+   
+
+    <a asp-action="Register" class="btn btn-sm btn-warning"><i class="fa fa-edit fa-2x"></i> Register User</a>
     <!-- <h4 class="card-title">Light card title</h4> -->
         <table class="table table-sm">
       <thead>
@@ -75,5 +78,4 @@
   </ul>
 </div>
 
-  </div>
-</div>
+ 

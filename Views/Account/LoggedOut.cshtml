@@ -34,7 +34,7 @@
             <div class="col-sm-12 col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Login</h3>
+                        <!-- <h1 class="panel-title">Logout</h1> -->
                     </div>
                     <div class="panel-body">
                     <div class="row">
@@ -44,34 +44,29 @@
 
                                             <img id="bdoLogoWeFind" alt="BDO" src="/images/bdoLogo.png">&nbsp;
                                         
-                                            <h3 class="float-right">
-                                                <strong >CLG</strong>
-                                                <small >Exchange <span ><strong>1.0.0</strong></span></small>
-                                            </h3>
+                                            
                                             <br>
                                             <span  class="pull-right"></span>
                                         </div>
                                         
                                 </div>
                     </div>
+                                            <h1>
+                                                <strong >CLG</strong>
+                                                <small >Exchange <span ><strong>1.0.0</strong></span></small>
+                                            </h1>
                                 <div class="alert alert-warning" >
-                                    <strong >System Description: </strong>
-                                    <p>A common request processing System for Consumer loans group.</p>
+                                    <!-- <strong >System Description: </strong>
+                                    <p>A common request processing System for Consumer loans group.</p> -->
 
-                                </div>
-                                     <div class="page-header logged-out">
+                                    <div class="page-header logged-out">
+                                        
                                         <h1>
-                                            Logout
+                                            
                                             <small>You are now logged out</small>
                                         </h1>
 
-                                        @if (Model.PostLogoutRedirectUri != null)
-                                        {
-                                            <div>
-                                                Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri" class="btn">  here <i class="fas fa-mouse-pointer"></i></a> to return to the
-                                                <span class="text-warning">@Model.ClientName</span> application.
-                                            </div>
-                                        }
+                                       
 
                                         @if (Model.SignOutIframeUrl != null)
                                         {
@@ -86,7 +81,15 @@
                                             <script src="~/js/signout-redirect.js"></script>
                                         }
                                     }
-  
+
+                                </div>
+                                      @if (Model.PostLogoutRedirectUri != null)
+                                        {
+                                            <div>
+                                                Click <a class="PostLogoutRedirectUri" href="@Model.PostLogoutRedirectUri" >  here <i class="fas fa-mouse-pointer"></i></a> to return to the
+                                                <strong class="text-primary">@Model.ClientName</strong> application.
+                                            </div>
+                                        }
                                 </div>
 
                                  <div class="panel-footer">
