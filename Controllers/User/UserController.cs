@@ -118,7 +118,13 @@ namespace IdsServer
         {
             //TODO: Implement Realistic Implementation
             var appUser= await _userManager.Users.Include(c=>c.Clients).FirstAsync(u=>u.Id.Equals((int) Id));
-           var clientList= appUser.Clients.ToList();
+            List<Client> clientList= new List<Client>();
+
+            foreach (var item in appUser.Clients)
+            {
+                clientList.Add(_configDbContext.Clients.Find(item.ClientId));
+            }
+           
           // await Task.Yield();
           ViewBag.tabId="application";
          
@@ -173,7 +179,7 @@ namespace IdsServer
               
             
             
-              return RedirectToAction("Index");
+              return RedirectToAction("Applications", new{ Id= Id});
             }
 
         
