@@ -5,6 +5,7 @@ namespace CLGE_CORE.Models
 {
     public class SystemViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string SystemName { get; set; }
         public Guid SystemId { get; set; }

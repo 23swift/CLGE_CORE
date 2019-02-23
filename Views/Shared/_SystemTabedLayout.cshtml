@@ -11,8 +11,11 @@
 
 
               <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                  <a class='nav-link @(controller.Equals("System") && action.Equals("UpdateDetails")  ? "active":string.Empty)' asp-controller="System" asp-action="UpdateDetails" asp-route-clientId="@ViewBag.clientId ">Details</a>
+                </li>
                 <li class="nav-item">
-                  <a class='nav-link @(controller.Equals("System")  ? "active":string.Empty)' asp-controller="System" asp-action="Modules" asp-route-clientId="@ViewBag.clientId ">Modules</a>
+                  <a class='nav-link @(controller.Equals("System") && action.Equals("Modules")  ? "active":string.Empty)' asp-controller="System" asp-action="Modules" asp-route-clientId="@ViewBag.clientId ">Modules</a>
                 </li>
                 
                 <!-- <li class="nav-item">

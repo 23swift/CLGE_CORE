@@ -1,0 +1,50 @@
+@model CLGE_CORE.Models.SystemViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_SystemTabedLayout";
+}
+
+<!-- <h1>@Model.SystemName</h1> -->
+
+<h1>Details</h1>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <input type="hidden" asp-for="Id" class="form-control" />
+            <div class="form-group">
+                <label asp-for="SystemName" class="control-label"></label>
+                <input asp-for="SystemName" class="form-control" />
+                <span asp-validation-for="SystemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemId" class="control-label"></label>
+                <input asp-for="SystemId" class="form-control" />
+                <span asp-validation-for="SystemId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientUri" class="control-label"></label>
+                <input asp-for="ClientUri" class="form-control" />
+                <span asp-validation-for="ClientUri" class="text-danger"></span>
+            </div>
+            <!-- <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Configure" /> @Html.DisplayNameFor(model => model.Configure)
+                </label>
+            </div> -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
