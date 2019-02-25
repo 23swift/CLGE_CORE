@@ -85,7 +85,7 @@ namespace IdsServer {
         _configDbContext.SaveChanges ();
 
         if (systemViewModel.Configure) {
-          return RedirectToAction ("Details", new { clientId = client.Id });
+          return RedirectToAction ("UpdateDetails", new { clientId = client.Id });
         } else {
           return RedirectToAction ("Index");
         }

@@ -3,14 +3,21 @@
    int clientId = ViewBag.ClientId;
 }
 @model IdsServer.Models.ApplicationRole
-
+<h2>Create Role</h2>
 <div id="" class="row">
     <div id="" class="col-md-4">
         
 
             <form asp-action="Create" method="post" asp-route-ClientId="@ViewBag.ClientId">
-                <fieldset>
-                    <legend>Create Role</legend>
+                
+                <div asp-validation-summary="ModelOnly" class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <!-- <strong>Oh snap!</strong> -->
+                <i class="fa fa-exclamation-triangle"></i>
+                </div>
+                 
+                <fieldset class="fieldset">
+                 
             <!-- <input type="hidden" name="ClientId" value="@ViewBag.ClientId"> -->
             
             <div id="" class="form-group">
@@ -21,8 +28,10 @@
 
             <div id="" class="row">
                 <div class="col-md-6">
+                    
                         <a asp-action="Index" class="btn btn-default " asp-route-clientId="@clientId">Cancel</a>
-                <button type="submit" class="btn btn-primary ">Submit</button>
+                         <button type="submit" class="btn btn-primary ">Submit</button>
+               
                  
                 </div>
                 <div class=" col-md-6 form-check pull-right">
@@ -34,6 +43,7 @@
 
             
                 </fieldset>
+                
             </form>
 
 

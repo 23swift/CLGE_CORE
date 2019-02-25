@@ -64,24 +64,44 @@ namespace IdsServer {
 
     [HttpPost]
     public async Task<IActionResult> Create ([Bind ("Name")] ApplicationRole role, int ClientId) {
-      var c = _configDbContext.Clients.Find (ClientId);
-      role.Client = ClientId;
+      
+      var ClientName="";
+      
+      if(ModelState.IsValid){
+          var roleExist=_appDbContext.Roles.Where(r=>r.Name.Equals(role.Name) && r.Client.Equals(ClientId)).FirstOrDefault();
+          if(roleExist==null){
+              // return BadRequest("Role Already Exist!");
+          var c = _configDbContext.Clients.Find (ClientId);
+          role.Client = ClientId;
+          await _appDbContext.Roles.AddAsync(role);
+          await _appDbContext.SaveChangesAsync();
+           return RedirectToAction ("Index", new { clientId = ClientId });
+             
+          }else{
+             var clientApp = _configDbContext.Clients.Where (c => c.Id.Equals ((int) ClientId)).FirstOrDefault ();
+             ClientName=clientApp.ClientName;
+             ModelState.AddModelError(string.Empty, "Role Already Exist!");
+          }
+
+         
+      }
+ 
       //  role.RoleClaims = new List<ApplicationRoleClaim> {
       //                       new ApplicationRoleClaim { ClaimType = "access", ClaimValue = "aoEncoder", Name = "AO Encoder Route", Description = "" },
       //                       new ApplicationRoleClaim { ClaimType = "access", ClaimValue = "aoEncoderRpt", Name = "AO Encoder Report", Description = "" },
       //                   };
 
-      await _roleMager.CreateAsync (role);
-      //await _appDbContext.Roles.AddAsync(role);
-      // await _appDbContext.SaveChangesAsync();
+      //await _roleMager.CreateAsync (role);
+      
       // await _roleMager.CreateAsync (role);
       //  await _roleMager.AddClaimAsync (role, new Claim ( "dashboard", "aoDasboard"));
       // await _roleMager.AddClaimAsync (role, new Claim ("route", "newAff"));
       // await _roleMager.AddClaimAsync (role, new Claim ("route", "branchAf"));
 
       // await _roleMager.UpdateAsync(role);
-
-      return RedirectToAction ("Index", new { clientId = ClientId });
+      ViewBag.ClientId = ClientId;
+      ViewBag.systemName = ClientName;
+     return View(role);
     }
 
     public IActionResult RoleAccess (int? clientId, int? roleId) {
