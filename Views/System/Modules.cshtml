@@ -25,7 +25,7 @@
                 <td>@item.Key</td>
                 <td>@item.Value</td>
                 <td>
-                    <a> <i class="fa fa-edit"></i></a> | <a> <i class="fa fa-trash"></i></a>
+                    <a asp-action="UpdateModule" asp-route-ClientId="@item.ClientId" asp-route-Id="@item.Id" > <i class="fa fa-edit"></i></a> | <a> <i class="fa fa-trash"></i></a>
 
                 </td>
                 

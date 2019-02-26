@@ -55,12 +55,15 @@ namespace IdsServer {
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult NewModule (IdentityServer4.EntityFramework.Entities.ClientProperty property, int? clientId) {
+    public IActionResult NewModule (CLGE_CORE.Models.ModuleViewModel property, int? clientId) {
       if (ModelState.IsValid) {
 
         var clientApp = _configDbContext.Clients.Find (clientId);
         clientApp.Properties = new List<ClientProperty> ();
-        clientApp.Properties.Add (property);
+        clientApp.Properties.Add (new ClientProperty{
+           Key=property.Key,Value=property.Value
+
+        });
         _configDbContext.SaveChanges ();
 
       }
@@ -68,7 +71,40 @@ namespace IdsServer {
       //TODO: Implement Realistic Implementation
       return RedirectToAction ("Modules", new { clientId = clientId });
     }
+public IActionResult UpdateModule (int? clientId,int? Id) {
+      //TODO: Implement Realistic Implementation
+     var clientApp= _configDbContext.Clients.Include("Properties").Where (c => c.Id.Equals ((int) clientId)).FirstOrDefault ();
+     if(clientApp!=null){
+        var clientProps = clientApp.Properties;
+        var module=clientProps.Find(m=>m.Id.Equals(Id));
+        var moduleViewModel= new CLGE_CORE.Models.ModuleViewModel{
+          Id=module.Id,Key=module.Key,Value=module.Value
+        };
+        ViewBag.ClientId = clientId;
+        ViewBag.systemName = clientApp.ClientName;
+        return View (moduleViewModel);
+     }
+      return NotFound();
 
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult UpdateModule (CLGE_CORE.Models.ModuleViewModel property, int? clientId) {
+      if (ModelState.IsValid) {
+       var clientApp= _configDbContext.Clients.Include("Properties").Where (c => c.Id.Equals ((int) clientId)).FirstOrDefault ();
+        
+        var currentPop=clientApp.Properties.Find(cp=>cp.Id.Equals(property.Id));
+        currentPop.Key=property.Key;
+        currentPop.Value=property.Value;
+        
+        _configDbContext.SaveChanges ();
+        
+        return RedirectToAction ("Modules", new { clientId = clientId });
+      }
+    return View(property);
+      //TODO: Implement Realistic Implementation
+      
+    }
     public IActionResult RegisterSystem () {
       //TODO: Implement Realistic Implementation
       return View ();

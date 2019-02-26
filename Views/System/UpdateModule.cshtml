@@ -7,10 +7,10 @@
  <div id="" class="row">
      <div id="" class="col-md-4">
 
- <form asp-action="NewModule" method="post" asp-route-clientId="@ViewBag.ClientId">
+ <form asp-action="UpdateModule" method="post" asp-route-clientId="@ViewBag.ClientId">
             <!-- <input type="hidden" name="ClientId" value="@ViewBag.ClientId"> -->
             
-             <div id="" class="form-group">
+            <div id="" class="form-group">
                             <label for="UserName">Decription</label>
                             <input type="text" asp-for="Key" class="form-control">
                         <span asp-validation-for="Key" class="text-danger"></span>
