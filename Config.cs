@@ -17,7 +17,7 @@ namespace IdsServer
              var accessProfile = new IdentityResource(
                 name: "access.profile",
                 displayName: "Access Profile",
-                claimTypes: new[] { "system", "group","role","rank","userId"});
+                claimTypes: new[] { "system", "group","role","rank","userId","access"});
                 
             return new List<IdentityResource>
             {
@@ -27,6 +27,11 @@ namespace IdsServer
                 new IdentityResource {
                 Name = "role", DisplayName="User Roles",
                 UserClaims = new List<string> {"role"},Required=true
+                }
+                ,
+                new IdentityResource {
+                Name = "access", DisplayName="User Access",
+                UserClaims = new List<string> {"access"},Required=true
                 }
                  
             };

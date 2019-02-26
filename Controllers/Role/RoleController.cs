@@ -63,7 +63,7 @@ namespace IdsServer {
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create ([Bind ("Name")] ApplicationRole role, int ClientId) {
+    public async Task<IActionResult> Create ([Bind ("Name,Description")] ApplicationRole role, int ClientId) {
       
       var ClientName="";
       
@@ -73,8 +73,11 @@ namespace IdsServer {
               // return BadRequest("Role Already Exist!");
           var c = _configDbContext.Clients.Find (ClientId);
           role.Client = ClientId;
+          // _roleMager.NormalizeKey
+          role.NormalizedName=role.Name.ToUpper();
           await _appDbContext.Roles.AddAsync(role);
           await _appDbContext.SaveChangesAsync();
+         //  await  _roleMager.CreateAsync (role);
            return RedirectToAction ("Index", new { clientId = ClientId });
              
           }else{
@@ -141,7 +144,8 @@ namespace IdsServer {
       if (clientId == null || roleId == null) {
         return NotFound ();
       }
-      var role = _roleMager.Roles.Include ("RoleClaims").Where (r => r.Id.Equals (roleId)).FirstOrDefault ();
+      // var role = _roleMager.Roles.Include ("RoleClaims").Where (r => r.Id.Equals (roleId)).FirstOrDefault ();
+      var role =_appDbContext.Roles.Include ("RoleClaims").Where (r => r.Id.Equals (roleId)).FirstOrDefault ();
       // var role=_roleMager("RoleClaims").FindByIdAsync(((int)roleId).ToString());
       if( role.RoleClaims!=null){role.RoleClaims.Clear();}
       if (selectedAccess.SelectedModules != null) {
@@ -156,8 +160,10 @@ namespace IdsServer {
           }
 
         }
-
-        _roleMager.UpdateAsync (role);
+        
+        _appDbContext.Roles.Update(role);
+        var result=_appDbContext.SaveChanges();
+      // var result=   _roleMager.UpdateAsync (role).Result;
 
       }
       ViewBag.clientId = clientId;
@@ -178,7 +184,7 @@ namespace IdsServer {
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-     public IActionResult Edit([Bind ("Name,Id,ConcurrencyStamp,Client")] ApplicationRole roleVm, int? clientId)
+     public IActionResult Edit([Bind ("Name,Id,ConcurrencyStamp,Client,Description")] ApplicationRole roleVm, int? clientId)
     {
       //TODO: Implement Realistic Implementation
       

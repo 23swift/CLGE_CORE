@@ -38,7 +38,7 @@ namespace IdsServer
                 claimsNames.AddRange(new[]{
                     
                 //    "Permission",
-                //     "username",
+                "access",
                 "dashboard",
                 "route",
                 "rank",
