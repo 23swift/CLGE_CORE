@@ -1,13 +1,16 @@
 @{
     Layout="_TabbedLayout";
     var Id = ViewContext.RouteData.Values["Id"];
+    
+    
+
 }
 @model List<IdentityServer4.EntityFramework.Entities.Client>
 <div>
     <H3>Applications</H3>
-    <div class="float-right">
-            <a type="button" asp-action="AddUserApplication" asp-route-id="@Id" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Application</a>
-    </div>
+   
+            <a type="button" asp-action="AddUserApplication" asp-route-id="@Id" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i> Add Application Access</a>
+   
 
 </div>
 
@@ -17,7 +20,7 @@
     <th>System Name</th>
     
     <th></th>
-    <th></th>
+    <!-- <th></th> -->
     
     <th></th>
 </thead>
@@ -28,10 +31,10 @@
     <tr>
         <td>@item.ClientName </td>
        
-        <td><a asp-action="AddUserGroup" asp-route-id="@Id"> <i id="" class="fa fa-users-cog fa-2x" ></i> Groups</a></td>
+        <!-- <td><a asp-action="AddUserGroup" asp-route-id="@Id"> <i id="" class="fa fa-users-cog fa-2x" ></i> Groups</a></td> -->
         <td><a asp-action="AddUserRole" asp-route-ClientId="@item.Id" asp-route-Id="@Id"><i id="" class="fa fa-user-tag fa-2x"></i>Roles</a></td>
         
-        <td><a class="text-danger"><i id="" class="fa text-danger fa-minus-circle fa-2x "></i>Delete</a></td>
+        <td><a class="text-danger" asp-action="Application" asp-route-Id="@Id" asp-route-delete="true" ><i id="" class="fa text-danger fa-trash-alt fa-2x"></i>Delete</a></td>
     </tr>
         
     }
@@ -39,3 +42,9 @@
 </tbody>
 
 </table>
+
+@if(ViewBag.delete){
+    @await Html.PartialAsync("_DeleteConfirmDialog")
+    
+     
+}

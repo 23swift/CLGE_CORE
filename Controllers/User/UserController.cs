@@ -111,8 +111,16 @@ namespace IdsServer {
 
       return View ();
     }
-    public async Task<IActionResult> Applications (int? Id) {
+    public async Task<IActionResult> Applications (int Id,bool? delete=false) {
       //TODO: Implement Realistic Implementation
+       ViewBag.delete=delete;
+       ViewBag.Id=Id;
+    // if(delete.HasValue){
+        
+    //      ViewBag.selectedItem=selectedItem;
+    // }
+    
+    
       var appUser = await _userManager.Users.Include (c => c.Clients).FirstAsync (u => u.Id.Equals ((int) Id));
       List<Client> clientList = new List<Client> ();
 
@@ -127,20 +135,50 @@ namespace IdsServer {
     }
 
     [HttpGet]
-    public async Task<IActionResult> AddUserApplication (int Id) {
+    public async Task<IActionResult> AddUserApplication (int? Id) {
       //TODO: Implement Realistic Implementation
-      ViewBag.header = "Assign Application to User";
-      var applicationList = await _configDbContext.Clients.ToListAsync ();
-      IdsServer.Models.SystemSelectionViewModel selectionViewModel = new SystemSelectionViewModel ();
+       ViewBag.header = "Assign Application to User";
+      if (Id != null) {
+        var appUser = await _userManager.Users.Include (c => c.Clients).FirstAsync (u => u.Id.Equals ((int) Id));
+        var userAppList = appUser.Clients.ToList ();
 
-      foreach (var item in applicationList) {
-        selectionViewModel.Application.Add (new Models.SystemEditorViewModel {
-          Name = item.ClientName, ClientId = item.ClientId,
-            Id = item.Id
-        });
+        var applicationList = await _configDbContext.Clients.ToListAsync ();
+        foreach (var item in userAppList)
+        {
+          
+            applicationList.Remove(applicationList.FirstOrDefault(i=>i.Id.Equals(item.ClientId)));
+        }
+        
+        
+        IdsServer.Models.SystemSelectionViewModel selectionViewModel = new SystemSelectionViewModel ();
+
+        foreach (var item in applicationList) {
+          selectionViewModel.Application.Add (new Models.SystemEditorViewModel {
+            Name = item.ClientName, ClientId = item.ClientId,
+              Id = item.Id
+          });
+        }
+
+        return View (selectionViewModel);
       }
 
-      return View (selectionViewModel);
+      return NotFound();
+     
+
+    }
+    
+    public async Task<IActionResult> DeleteUserApplication (int? Id) {
+     
+      await Task.Yield();
+      return RedirectToAction("Applications",new{Id=Id,delete=true});
+    }
+
+    
+    [HttpDelete]
+     public async Task<IActionResult> ExecuteDeleteUserApplication (int? Id,int? ClientId) {
+     
+      await Task.Yield();
+      return RedirectToAction("Applications",new{Id=Id,delete=true});
     }
 
     [HttpPost]

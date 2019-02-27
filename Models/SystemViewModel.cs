@@ -10,7 +10,10 @@ namespace CLGE_CORE.Models
         public string SystemName { get; set; }
         public Guid SystemId { get; set; }
         public string Description { get; set; }
+
         [Required]
+        [RegularExpression(@"^(http|https)://[a-zA-Z]+$", 
+         ErrorMessage = "*Please follow the correct format(http://<HostName> or https://<HostaName>).")]
         public string ClientUri { get; set; }
         public bool Configure { get; set; }
         
