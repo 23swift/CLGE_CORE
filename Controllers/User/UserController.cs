@@ -111,9 +111,15 @@ namespace IdsServer {
 
       return View ();
     }
-    public async Task<IActionResult> Applications (int Id,bool? delete=false) {
+  //   [HttpGet("[controller]/[action]/{id?}/{delete?}")]
+    public async Task<IActionResult> Applications (int? Id, bool? delete=false,int? selecteditem=0) {
       //TODO: Implement Realistic Implementation
-       ViewBag.delete=delete;
+       if(delete.HasValue){
+         ViewBag.delete=delete;
+         ViewBag.selecteditem=selecteditem;
+       }else{ViewBag.delete=false;}
+       
+
        ViewBag.Id=Id;
     // if(delete.HasValue){
         
@@ -174,11 +180,21 @@ namespace IdsServer {
     }
 
     
-    [HttpDelete]
-     public async Task<IActionResult> ExecuteDeleteUserApplication (int? Id,int? ClientId) {
+   
+     public async Task<IActionResult> ExecuteDeleteUserApplication (int? Id,int? selecteditem) {
+      
+      var appUser = await _userManager.Users.Include (c => c.Clients).FirstAsync (u => u.Id.Equals ((int) Id));
+      var currentItem =appUser.Clients.FirstOrDefault(c=>c.ClientId.Equals(selecteditem));
+      appUser.Clients.Remove(currentItem);
+      var roleList = _roleMager.Roles.Where (r => r.Client.Equals ((int) selecteditem)).ToList ();
+      foreach (var item in roleList) {
+        await _userManager.RemoveFromRoleAsync(appUser,item.Name);
+      }
      
-      await Task.Yield();
-      return RedirectToAction("Applications",new{Id=Id,delete=true});
+      // _roleMager.
+      await _userManager.UpdateAsync(appUser);
+      
+      return RedirectToAction("Applications",new{Id=Id});
     }
 
     [HttpPost]
