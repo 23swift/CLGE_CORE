@@ -8,7 +8,7 @@
     var tabId=ViewBag.tabId;
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,49 +35,48 @@
 }
     @if(User.IsAuthenticated()){
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- <i class="fas fa-key fa-4x"></i> -->
-    <div class="row">
-        <div class="col-sm-12 col-xs-12">
-
-            <div>
-
-                <img src="~/images/bdoLogo.png" alt="BDO">&nbsp;
-                <h3 class="float-right">
-                                                <strong >CLG</strong>
-                                                <small >Exchange <span ><strong>1.0.0</strong></span></small>
-                                            </h3>
-                
-            </div>
-            
-        </div>
-    </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon">
-
-        <i class="fas fa-bars"></i>
-
-    </span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav  float-right">
-      <li class="nav-item active">
-        <a href="~/"  class="nav-link"> <i class="fas fa-home fa-4x"></i> Home </a>
-      </li>
-      <li class="nav-item">
-       <a asp-action="Index" asp-controller="User"  class="nav-link"> <i class="fas fa-users-cog fa-4x"></i> Users </a>
-      </li>
-       <li class="nav-item">
-       <a asp-controller="System" asp-action="Index"  class="nav-link"> <i class="fas fa-cogs fa-4x"></i> Systems </a>
-      </li>
-        <li class="nav-item">
-       <a asp-controller="Home" asp-action="Logout" class="nav-link"> <i class="fas fa-sign-out-alt fa-4x"></i> Logout </a>
-      </li>
         
-    </ul>
-     
-  </div>
-</nav>
+           
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                   
+                    <span class="navbar-toggler-icon">
+
+                        <i class="fas fa-bars"></i>
+
+                    </span>
+                </button>
+ <div class="navbar-brand" style="padding=0" >
+ 
+                    <div>
+
+                        <img src="~/images/bdoLogo.png" alt="BDO">
+                        <h3>CLG</h3><small >Exchange <span ><strong>1.0.0</strong></span></small>
+                        
+                    </div>
+                   
+                    
+           
+ </div>
+
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav  float-right">
+                    <li class="nav-item active">
+                        <a href="~/"  class="nav-link"> <i class="fas fa-home fa-4x"></i> Home </a>
+                    </li>
+                    <li class="nav-item">
+                    <a asp-action="Index" asp-controller="User"  class="nav-link"> <i class="fas fa-users-cog fa-4x"></i> Users </a>
+                    </li>
+                    <li class="nav-item">
+                    <a asp-controller="System" asp-action="Index"  class="nav-link"> <i class="fas fa-cogs fa-4x"></i> Systems </a>
+                    </li>
+                        <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Logout" class="nav-link"> <i class="fas fa-sign-out-alt fa-4x"></i> Logout </a>
+                    </li>
+                        
+                    </ul>
+                    
+                </div>
+        </nav>
     }
  
 
@@ -94,7 +93,7 @@
 
    
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- <script src="~/lib/fa/all.js"></script> -->
+    
     @RenderSection("scripts", required: false)
     
 </body>

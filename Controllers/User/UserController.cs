@@ -100,7 +100,7 @@ namespace IdsServer {
     public async Task<IActionResult> Details (int? Id) {
       //TODO: Implement Realistic Implementation
       var appUser = await _userManager.Users.Where (u => u.Id.Equals ((int) Id)).FirstOrDefaultAsync ();
-
+      ViewBag.header=appUser.UserName;
       ViewBag.tabId = "details";
 
       return View (appUser);
@@ -128,6 +128,7 @@ namespace IdsServer {
     
     
       var appUser = await _userManager.Users.Include (c => c.Clients).FirstAsync (u => u.Id.Equals ((int) Id));
+      ViewBag.header=appUser.UserName;
       List<Client> clientList = new List<Client> ();
 
       foreach (var item in appUser.Clients) {

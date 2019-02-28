@@ -7,11 +7,16 @@
 
 <!-- <h1>@Model.SystemName</h1> -->
 
-<h1>Details</h1>
-<hr/>
+
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateDetails">
+
+        <div class="card">
+             
+  <div class="card-body">
+    <h2 class="card-title">Details</h2>
+    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+     <form asp-action="UpdateDetails">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
              <input type="hidden" asp-for="Id" class="form-control" />
             <div class="form-group">
@@ -44,6 +49,9 @@
                 <a asp-action="Index" class="btn">Back to List</a>
             </div>
         </form>
+  </div>
+</div>
+       
     </div>
 </div>
 

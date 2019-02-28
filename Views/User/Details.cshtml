@@ -2,37 +2,58 @@
     Layout="_TabbedLayout";
 }
 @model IdsServer.Models.ApplicationUser
-<H1>Details</H1>
 
-<form asp-controller="User" asp-action="Update" method="post">
 
-<input type="hidden" asp-for="Id" class="form-control">
-             <div id="" class="form-group">
-                <label for="UserName">User Name</label>
-                <input type="text" asp-for="UserName" class="form-control">
-            
-            </div>
 
-            <div id="" class="form-group"><label for="FirstName">First Name</label>
-                <input type="text" class="form-control" asp-for="FirstName">
-            </div>
+<div id="" class="row">
+    <div id="" class="col-md-6">
+<div class="card border-light">
+  
+      
+  
+  <div class="card-body">
+       <H2>Details</H2>
+    <!-- <h4 class="card-title">Light card title</h4> -->
+            <form asp-controller="User" asp-action="Update" method="post">
 
-        <div id="" class="form-group"><label for="LastName" >Last Name</label>
-            <input type="text" class="form-control" asp-for="LastName">
-        </div>
-    <div >
-        <div id="" class="float-left">
-                <button type="submit" class="btn btn-danger">
-                    <i id="" class="fa fa-user-times"></i>
-                    Delete</button>
-        </div>
-        <div id="" class="float-right">
-                    <a asp-action="Index" class="btn btn-default"><i id="" class="fa fa-chevron-left"></i> Back</a>
-                    <button type="submit" class="btn btn-primary">
-                        <i id="" class="fa fa-save"></i>
-                        Submit
-                    </button>
-        </div>
-               
+                <input type="hidden" asp-for="Id" class="form-control">
+                            <div id="" class="form-group">
+                                <label for="UserName">User Name</label>
+                                <input type="text" asp-for="UserName" class="form-control">
+                            
+                            </div>
+
+                            <div id="" class="form-group"><label for="FirstName">First Name</label>
+                                <input type="text" class="form-control" asp-for="FirstName">
+                            </div>
+
+                        <div id="" class="form-group"><label for="LastName" >Last Name</label>
+                            <input type="text" class="form-control" asp-for="LastName">
+                        </div>
+                    <div >
+                        <div id="" class="float-left">
+                                <button type="submit" class="btn btn-danger">
+                                    <i id="" class="fa fa-user-times"></i>
+                                    Delete</button>
+                        </div>
+                        <div id="" class="float-right">
+                                    <a asp-action="Index" class="btn btn-default"><i id="" class="fa fa-chevron-left"></i> Back</a>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i id="" class="fa fa-save"></i>
+                                        Submit
+                                    </button>
+                        </div>
+                            
+                    </div>
+                </form>
+
+
+  </div>
+</div>
+
+
+
     </div>
-</form>
+</div>
+
+
