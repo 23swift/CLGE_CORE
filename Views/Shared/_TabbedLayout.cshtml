@@ -1,8 +1,9 @@
 @{
     Layout = "_UserLayout";
-    var action = ViewContext.RouteData.Values["Action"];
-     var controller = ViewContext.RouteData.Values["Controller"];
+    string action = ViewContext.RouteData.Values["Action"].ToString();
+     var controller = ViewContext.RouteData.Values["Controller"].ToString();
          var Id = ViewContext.RouteData.Values["Id"];
+         List<string> appActionList= new List<string>{"Applications","AddUserRole"};
     var tabId=ViewBag.tabId;
 }
 
@@ -18,7 +19,7 @@
                   <a class='nav-link  @(action.Equals("Roles") ? "active":string.Empty)'  asp-action="Roles">Roles</a>
                 </li> -->
                 <li class="nav-item">
-                  <a class='nav-link  @(action.Equals("Applications") ? "active":string.Empty)'   asp-action="Applications"  asp-route-id="@Id" >Applications</a>
+                  <a class='nav-link  @(appActionList.Contains(action) ? "active":string.Empty)'   asp-action="Applications"  asp-route-id="@Id" >Applications</a>
                 </li>
                 <!-- <li  class="nav-item">
                   <a class="nav-link disabled" href="#">Disabled</a>

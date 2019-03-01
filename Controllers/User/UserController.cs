@@ -231,16 +231,20 @@ namespace IdsServer {
 
       return View ();
     }
-    public async Task<IActionResult> AddUserRole (int? clientId) {
+    public async Task<IActionResult> AddUserRole (int? clientId,int? Id) {
       //TODO: Implement Realistic Implementation
+       var user = _userManager.FindByIdAsync (((int) Id).ToString ()).Result;
       ViewBag.ClientId = (int) clientId;
       var roleListViewModel = new List<RoleEditorViewModel> ();
       var roleList = _roleMager.Roles.Where (r => r.Client.Equals ((int) clientId)).ToList ();
       foreach (var item in roleList) {
-        roleListViewModel.Add (new RoleEditorViewModel {
+        var role=new RoleEditorViewModel {
           Name = item.Name, Id = item.Id
-
-        });
+            
+        };
+         role.Selected=_userManager.IsInRoleAsync(user,item.Name).Result;
+       
+        roleListViewModel.Add (role);
       }
 
       await Task.Yield ();
@@ -257,6 +261,8 @@ namespace IdsServer {
 
           await _userManager.AddToRoleAsync (user, item.Name);
           //  await  _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, item.Name));
+        }else{
+           await _userManager.RemoveFromRoleAsync(user, item.Name);
         }
 
       }
