@@ -87,7 +87,8 @@ namespace IdsServer {
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Update ([Bind ("FirstName,LastName,UserName,Id")] ApplicationUser user) {
       //TODO: Implement Realistic Implementation
-      var u = await _userManager.FindByIdAsync (user.UserName);
+      
+      var u = await _userManager.FindByIdAsync (user.Id.ToString());
       u.FirstName = user.FirstName;
       u.LastName = user.LastName;
       u.UserName = user.UserName;

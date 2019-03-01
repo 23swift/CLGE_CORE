@@ -8,11 +8,15 @@
     position: relative;
     top: -4px;
 }
-
+.navbar-brand{
+    max-width: 200px !important;
+    max-height: 150px !important;
+}
 .navbar-brand>.icon-banner {
     position: relative;
-    top: -2px;
+    /* top: -2px; */
     display: inline;
+    /* height: 0px; */
 }
 
 .icon {
@@ -312,9 +316,10 @@ select.form-control {
     color:  whitesmoke !important;
 }
 
-/* .nav-item .fas {
-    color: #043673;
-} */
+.nav-item .fas {
+    color: #043673 !important;
+
+}
 .navbar-nav li a i {
     /* color: #FFB20C !important; */
     
@@ -397,5 +402,4 @@ td a i {
 
     color:#043673 !important;
 }
-
 

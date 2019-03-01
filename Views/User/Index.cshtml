@@ -29,8 +29,8 @@
     <tr>
       <th scope="col">User Name</th>
       <th scope="col">Full Name</th>
-      <th scope="col">Group</th>
-      <th scope="col">Role</th>
+      <!-- <th scope="col">Group</th>
+      <th scope="col">Role</th> -->
       <th scope="col"></th>
     </tr>
   </thead>
@@ -41,9 +41,9 @@
        <tr>
         <td>@item.UserName</td>
         <td>@item.FirstName  @item.LastName</td>
-        <td>ITD</td>
-        <td>Admin</td>
-        <td> <a  asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |<i class="fa fa-trash"></i></td>
+        <!-- <td>ITD</td>
+        <td>Admin</td> -->
+        <td> <a  asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-user-cog fa-2x"></i></a> | <i class="fa fa-user-times fa-2x text-danger"></i></td>
       </tr>
    }
    

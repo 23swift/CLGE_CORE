@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CLGE_CORE.Models
 {
-    public class ModuleViewModel: IValidatableObject
+    public class ModuleViewModel
 
     {
         public int Id { get; set; }
@@ -17,9 +17,9 @@ namespace CLGE_CORE.Models
          [DisplayName("Code")] 
         public string Value { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            throw new System.NotImplementedException();
-        }
+        // public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        // {
+        //     throw new System.NotImplementedException();
+        // }
     }
 }

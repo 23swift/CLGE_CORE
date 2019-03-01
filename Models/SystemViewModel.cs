@@ -12,7 +12,7 @@ namespace CLGE_CORE.Models
         public string Description { get; set; }
 
         [Required]
-        [RegularExpression(@"^(http|https)://[a-zA-Z]+$", 
+        [RegularExpression(@"^(http|https)://[a-zA-Z0-9]+$", 
          ErrorMessage = "*Please follow the correct format(http://<HostName> or https://<HostaName>).")]
         public string ClientUri { get; set; }
         public bool Configure { get; set; }
